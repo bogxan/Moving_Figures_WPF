@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bohdan\\OneDrive\\Рабочий стол\\Moving_Figures_WPF\\task1\\task1.csproj": {}
+    "C:\\Users\\Bohdan\\OneDrive\\Рабочий стол\\traineeship\\task1\\task1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bohdan\\OneDrive\\Рабочий стол\\Moving_Figures_WPF\\task1\\task1.csproj": {
+    "C:\\Users\\Bohdan\\OneDrive\\Рабочий стол\\traineeship\\task1\\task1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bohdan\\OneDrive\\Рабочий стол\\Moving_Figures_WPF\\task1\\task1.csproj",
+        "projectUniqueName": "C:\\Users\\Bohdan\\OneDrive\\Рабочий стол\\traineeship\\task1\\task1.csproj",
         "projectName": "task1",
-        "projectPath": "C:\\Users\\Bohdan\\OneDrive\\Рабочий стол\\Moving_Figures_WPF\\task1\\task1.csproj",
+        "projectPath": "C:\\Users\\Bohdan\\OneDrive\\Рабочий стол\\traineeship\\task1\\task1.csproj",
         "packagesPath": "C:\\Users\\Bohdan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bohdan\\OneDrive\\Рабочий стол\\Moving_Figures_WPF\\task1\\obj\\",
+        "outputPath": "C:\\Users\\Bohdan\\OneDrive\\Рабочий стол\\traineeship\\task1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

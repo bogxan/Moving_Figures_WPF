@@ -13,10 +13,13 @@ C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net
 C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\MainWindow.baml
 C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\task1.g.resources
 C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\task1.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\task1.AssemblyInfoInputs.cache
-C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\task1.AssemblyInfo.cs
 C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\task1.csproj.CoreCompileInputs.cache
 C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\task1.dll
 C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\ref\task1.dll
 C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\task1.pdb
 C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\task1.genruntimeconfig.cache
+C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\App.baml
+C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\task1.Properties.Resources.resources
+C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\task1.csproj.GenerateResource.cache
+C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\Resources\lang.ru-RU.baml
+C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\obj\Debug\net5.0-windows\Resources\lang.baml

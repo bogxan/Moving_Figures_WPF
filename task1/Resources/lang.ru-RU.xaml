@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <v:String x:Key="m_Title">Задание 1</v:String>
+    <v:String x:Key="m_btnTriangle">Треугольник</v:String>
+    <v:String x:Key="m_btnRectangle">Прямоугольник</v:String>
+    <v:String x:Key="m_btnCircle">Круг</v:String>
+    <v:String x:Key="m_treeViewItemTria">Треугольник</v:String>
+    <v:String x:Key="m_treeViewItemRect">Прямоугольник</v:String>
+    <v:String x:Key="m_treeViewItemCirc">Круг</v:String>
+    <v:String x:Key="m_treeViewFigures">Фигуры</v:String>
+    <v:String x:Key="m_treeViewItemRectangle">Прямоугольник:</v:String>
+    <v:String x:Key="m_treeViewItemTriangle">Треугольник:</v:String>
+    <v:String x:Key="m_treeViewItemCircle">Круг:</v:String>
+    <v:String x:Key="m_menu_Language">Язык</v:String>
+</ResourceDictionary>

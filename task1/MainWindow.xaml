@@ -1,11 +1,11 @@
-﻿<Window x:Class="task1.MainWindow"
+﻿<Window x:Class="Task1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:task1"
+        xmlns:local="clr-namespace:Task1"
         mc:Ignorable="d"
-        Title="Task 1" Background="Bisque" IsVisibleChanged="Window_IsVisibleChanged" Height="800"  Width="800">
+        Title="{DynamicResource m_Title}" Background="Bisque" IsVisibleChanged="Window_IsVisibleChanged" Name="main_window" Height="800"  Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
@@ -15,18 +15,21 @@
             <RowDefinition Height="150"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="0" Grid.Column="1" >
-            <Button Background="Yellow" Width="100px" Height="50px" Margin="25px" Name="addTriangleBtn" Click="addTriangleBtn_Click">Triangle</Button>
-            <Button Background="Yellow" Width="100px" Height="50px" Margin="25px" Name="addCircleBtn" Click="addCircleBtn_Click">Circle</Button>
-            <Button Background="Yellow" Width="100px" Height="50px" Margin="25px" Name="addRectangleBtn" Click="addRectangleBtn_Click">Rectangle</Button>
+        <Menu Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Yellow">
+            <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
+        </Menu>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+            <Button Background="Yellow" Width="100px" Height="50px" Margin="25px" Name="addTriangleBtn" Click="AddTriangleBtn_Click" Content="{DynamicResource m_btnTriangle}"></Button>
+            <Button Background="Yellow" Width="100px" Height="50px" Margin="25px" Name="addCircleBtn" Click="AddCircleBtn_Click" Content="{DynamicResource m_btnCircle}"></Button>
+            <Button Background="Yellow" Width="100px" Height="50px" Margin="25px" Name="addRectangleBtn" Click="AddRectangleBtn_Click" Content="{DynamicResource m_btnRectangle}"></Button>
         </StackPanel>
         <TreeView BorderThickness="0" Background="Bisque" Grid.Row="1" Grid.Column="0">
-            <TreeViewItem IsExpanded="True" Background="Yellow" Name="treeViewItemFigures" Header="Figures:">
-                <TreeViewItem Background="Yellow" IsExpanded="True" Name="treeViewItemCircle" Header="Circle:"></TreeViewItem>
-                <TreeViewItem Background="Yellow" IsExpanded="True" Name="treeViewItemRectangle" Header="Rectangle: "></TreeViewItem>
-                <TreeViewItem Background="Yellow" IsExpanded="True" Name="treeViewItemTriangle" Header="Triangle: "></TreeViewItem>
+            <TreeViewItem IsExpanded="True" Background="Yellow" Name="treeViewItemFigures" Header="{DynamicResource m_treeViewFigures}">
+                <TreeViewItem Background="Yellow" IsExpanded="True" Name="treeViewItemCircle" Header="{DynamicResource m_treeViewItemCircle}"></TreeViewItem>
+                <TreeViewItem Background="Yellow" IsExpanded="True" Name="treeViewItemRectangle" Header="{DynamicResource m_treeViewItemRectangle}"></TreeViewItem>
+                <TreeViewItem Background="Yellow" IsExpanded="True" Name="treeViewItemTriangle" Header="{DynamicResource m_treeViewItemTriangle}"></TreeViewItem>
             </TreeViewItem>
         </TreeView>
-        <Canvas Background="LightCyan" ClipToBounds="True" Grid.Row="1" Grid.Column="1" Name="canvasFigures"></Canvas>
+        <Canvas SizeChanged="CanvasFigures_SizeChanged" Background="LightCyan" ClipToBounds="True" Grid.Row="1" Grid.Column="1" Name="canvasFigures"></Canvas>
     </Grid>
 </Window>

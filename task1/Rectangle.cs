@@ -1,33 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using System.Windows.Shapes;
-
-namespace task1
+﻿namespace Task1
 {
-    public class MyRectangle: MyFigure
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Media;
+    using System.Windows.Shapes;
+
+    public class MyRectangle : MyFigure
     {
-        public int width { get; set; }
-        public int height { get; set; }
         public MyRectangle(int width, int height, int x, int y)
         {
-            this.width = width;
-            this.height = height;
-            base.x1 = x;
-            base.y1 = y;
+            this.Width = width;
+            this.Height = height;
+            this.X1 = x;
+            this.Y1 = y;
         }
+
+        public int Width { get; set; }
+
+        public int Height { get; set; }
+
         public override void Draw()
         {
-            Rectangle rectangle = new Rectangle();
-            rectangle.Width = width;
-            rectangle.Height = height;
+            Rectangle rectangle = new();
+            rectangle.Width = this.Width;
+            rectangle.Height = this.Height;
             rectangle.Stroke = new SolidColorBrush(Colors.Black);
             rectangle.StrokeThickness = 1;
             rectangle.Fill = new SolidColorBrush(Colors.Green);
-            shape = rectangle;
+            this.Shape = rectangle;
         }
     }
 }
