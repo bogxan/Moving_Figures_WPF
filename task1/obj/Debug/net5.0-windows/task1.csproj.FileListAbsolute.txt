@@ -48,3 +48,4 @@ C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\Moving_Figures_WPF\
 C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\Moving_Figures_WPF\task1\obj\Debug\net5.0-windows\task1.pdb
 C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\Moving_Figures_WPF\task1\obj\Debug\net5.0-windows\task1.genruntimeconfig.cache
 C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\Moving_Figures_WPF\task1\obj\Debug\net5.0-windows\Resources\lang.uk-UA.baml
+C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\Moving_Figures_WPF\task1\obj\Debug\net5.0-windows\task1.csproj.AssemblyReference.cache

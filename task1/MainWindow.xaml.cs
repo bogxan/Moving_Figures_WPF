@@ -23,6 +23,7 @@
         private readonly List<MyFigure> figuresInProgram = new();
         private Point sizeOfCanvas = new();
         private readonly Random rnd = new();
+        private int countTria = 0, countRect = 0, countCirc = 0;
 
         public MainWindow()
         {
@@ -69,15 +70,15 @@
             }
             for (int i = 0; i < treeViewItemTriangle.Items.Count; i++)
             {
-                treeViewItemTriangle.Items[i] = FindResource("m_treeViewItemTria").ToString();
+                treeViewItemTriangle.Items[i] = FindResource("m_treeViewItemTria").ToString() + $" {i + 1}";
             }
             for (int i = 0; i < treeViewItemRectangle.Items.Count; i++)
             {
-                treeViewItemRectangle.Items[i] = FindResource("m_treeViewItemRect").ToString();
+                treeViewItemRectangle.Items[i] = FindResource("m_treeViewItemRect").ToString() + $" {i + 1}";
             }
             for (int i = 0; i < treeViewItemCircle.Items.Count; i++)
             {
-                treeViewItemCircle.Items[i] = FindResource("m_treeViewItemCirc").ToString();
+                treeViewItemCircle.Items[i] = FindResource("m_treeViewItemCirc").ToString() + $" {i + 1}";
             }
         }
 
@@ -103,8 +104,9 @@
 
         private void AddTriangleBtn_Click(object sender, RoutedEventArgs e)
         {
+            this.countTria++;
             TreeViewItem addNode = new();
-            addNode.Header = FindResource("m_treeViewItemTria").ToString();
+            addNode.Header = FindResource("m_treeViewItemTria").ToString()+$" {this.countTria}";
             treeViewItemTriangle.Items.Add(addNode);
             MyTriangle triangle = new(50, 150, 150, 50, 250, 150);
             triangle.Draw();
@@ -117,8 +119,9 @@
 
         private void AddCircleBtn_Click(object sender, RoutedEventArgs e)
         {
+            this.countCirc++;
             TreeViewItem addNode = new();
-            addNode.Header = FindResource("m_treeViewItemCirc").ToString();
+            addNode.Header = FindResource("m_treeViewItemCirc").ToString()+$" {this.countCirc}";
             treeViewItemCircle.Items.Add(addNode);
             MyCircle circle = new(50, 100, 100);
             circle.Draw();
@@ -131,8 +134,9 @@
 
         private void AddRectangleBtn_Click(object sender, RoutedEventArgs e)
         {
+            this.countRect++;
             TreeViewItem addNode = new();
-            addNode.Header = FindResource("m_treeViewItemRect").ToString();
+            addNode.Header = FindResource("m_treeViewItemRect").ToString()+$" {this.countRect}";
             treeViewItemRectangle.Items.Add(addNode);
             MyRectangle rectangle = new(200, 200, 300, 300);
             rectangle.Draw();
