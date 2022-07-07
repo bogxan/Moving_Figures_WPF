@@ -4,6 +4,10 @@
     <configuration>
     </configuration>
   </project>
+  <project key="-1431042532">
+    <configuration>
+    </configuration>
+  </project>
   <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2022.06.16 15:52:26.961</styleCop>
@@ -230,7 +234,7 @@
     <timestamps>
       <styleCop>2022.06.16 15:52:26.961</styleCop>
       <settingsFile>2022.06.16 15:52:26.943</settingsFile>
-      <sourceFile>2022.06.21 10:10:41.515</sourceFile>
+      <sourceFile>2022.07.07 10:25:09.897</sourceFile>
       <parser>2022.06.16 15:52:26.961</parser>
       <StyleCop.CSharp.DocumentationRules>2022.06.16 15:52:26.961</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1455749285</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -274,8 +278,18 @@
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
+        <context>The property must have a documentation header.</context>
         <line>21</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The property must have a documentation header.</context>
+        <line>23</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>25</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -284,7 +298,7 @@
     <timestamps>
       <styleCop>2022.06.16 15:52:26.961</styleCop>
       <settingsFile>2022.06.16 15:52:26.943</settingsFile>
-      <sourceFile>2022.07.04 11:37:38.648</sourceFile>
+      <sourceFile>2022.07.07 11:02:01.002</sourceFile>
       <parser>2022.06.16 15:52:26.961</parser>
       <StyleCop.CSharp.DocumentationRules>2022.06.16 15:52:26.961</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1455749285</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -303,8 +317,8 @@
     </timestamps>
     <violations>
       <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
-        <context>A syntax error has been discovered in file C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\task1\MainWindow.xaml.cs on line 92.</context>
-        <line>92</line>
+        <context>A syntax error has been discovered in file C:\Users\Bohdan\OneDrive\Рабочий стол\traineeship\Moving_Figures_WPF\task1\MainWindow.xaml.cs on line 112.</context>
+        <line>112</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -476,7 +490,7 @@
     <timestamps>
       <styleCop>2022.06.16 15:52:26.961</styleCop>
       <settingsFile>2022.06.16 15:52:26.943</settingsFile>
-      <sourceFile>2022.07.04 11:45:23.218</sourceFile>
+      <sourceFile>2022.07.07 11:02:53.029</sourceFile>
       <parser>2022.06.16 15:52:26.961</parser>
       <StyleCop.CSharp.DocumentationRules>2022.06.16 15:52:26.961</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1455749285</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -511,53 +525,32 @@
       </violation>
       <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
         <context>All constructors must be placed after all fields.</context>
-        <line>26</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to App_LanguageChanged must begin with the 'this.', 'base.', 'object.' or 'App.' or 'Application.' prefix to indicate the intended method call. </context>
-        <line>17</line>
-        <index>420</index>
-        <endIndex>438</endIndex>
-        <startLine>17</startLine>
-        <startColumn>36</startColumn>
-        <endLine>17</endLine>
-        <endColumn>54</endColumn>
+        <line>27</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The event must have a documentation header.</context>
-        <line>24</line>
+        <line>25</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The field must have a documentation header.</context>
-        <line>26</line>
+        <line>27</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The property must have a documentation header.</context>
-        <line>28</line>
+        <line>29</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The property must have a documentation header.</context>
-        <line>36</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="UseBuiltInTypeAlias" ruleCheckId="SA1121">
-        <context>Use the built-in type alias 'string' rather than String or System.String.</context>
-        <line>60</line>
+        <line>37</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The method must have a documentation header.</context>
-        <line>85</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="UseBuiltInTypeAlias" ruleCheckId="SA1121">
-        <context>Use the built-in type alias 'object' rather than Object or System.Object.</context>
-        <line>85</line>
+        <line>93</line>
         <warning>False</warning>
       </violation>
     </violations>

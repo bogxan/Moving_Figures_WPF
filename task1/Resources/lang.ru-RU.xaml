@@ -5,6 +5,8 @@
     <v:String x:Key="m_btnTriangle">Треугольник</v:String>
     <v:String x:Key="m_btnRectangle">Прямоугольник</v:String>
     <v:String x:Key="m_btnCircle">Круг</v:String>
+    <v:String x:Key="m_btnStart">Начать движение</v:String>
+    <v:String x:Key="m_btnStop">Остановить движение</v:String>
     <v:String x:Key="m_treeViewItemTria">Треугольник</v:String>
     <v:String x:Key="m_treeViewItemRect">Прямоугольник</v:String>
     <v:String x:Key="m_treeViewItemCirc">Круг</v:String>

@@ -12,6 +12,10 @@
 
     public abstract class MyFigure
     {
+        public string Name { get; set; }
+
+        public bool IsMoving { get; set; }
+
         public Shape Shape { get; set; }
 
         public int X1 { get; set; }

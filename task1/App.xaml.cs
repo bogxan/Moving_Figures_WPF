@@ -14,7 +14,7 @@
         public App()
         {
             this.InitializeComponent();
-            App.LanguageChanged += App_LanguageChanged;
+            App.LanguageChanged += this.App_LanguageChanged;
             languages.Clear();
             languages.Add(new CultureInfo("en-US"));
             languages.Add(new CultureInfo("ru-RU"));
@@ -63,7 +63,7 @@
                     }
                     else
                     {
-                        dict.Source = new Uri(String.Format("Resources/lang.{0}.xaml", value.Name), UriKind.Relative);
+                        dict.Source = new Uri(string.Format("Resources/lang.{0}.xaml", value.Name), UriKind.Relative);
                     }
                 }
                 catch (Exception)
@@ -90,7 +90,7 @@
             }
         }
 
-        private void App_LanguageChanged(Object sender, EventArgs e)
+        private void App_LanguageChanged(object sender, EventArgs e)
         {
             task1.Properties.Settings1.Default.DefaultLanguage = Language;
             task1.Properties.Settings1.Default.Save();
