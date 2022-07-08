@@ -1,5 +1,6 @@
-﻿namespace Task1
+﻿namespace Task1.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -8,6 +9,7 @@
     using System.Windows.Media;
     using System.Windows.Shapes;
 
+    [Serializable]
     public class MyRectangle : MyFigure
     {
         public MyRectangle(int width, int height, int x, int y)
@@ -17,6 +19,10 @@
             this.X1 = x;
             this.Y1 = y;
         }
+
+        public int X1 { get; set; }
+
+        public int Y1 { get; set; }
 
         public int Width { get; set; }
 
@@ -31,6 +37,12 @@
             rectangle.StrokeThickness = 1;
             rectangle.Fill = new SolidColorBrush(Colors.Green);
             this.Shape = rectangle;
+        }
+
+        public override void Serialize(JsonSerializer serializer, JsonWriter writer)
+        {
+            serializer.Serialize(writer, this.Id + " " + this.Name + " " + this.IsMoving + " " 
+                + this.X1 + " " + this.Y1 + " " + this.Width + " " + this.Height);
         }
     }
 }

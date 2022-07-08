@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "b1Vtz6JgtGwN+I/GevM3sA95vmOf3TuP//Z/Th19vaK7FchEyvaU9MeFIolLBtoAOXEobXeMfhyLrhRJNW6z7Q==",
+  "dgSpecHash": "FaoC3cEctFs8cieBqoDGyzfJuxs3/nY3S2Ky5WLb4quIqpKcBywbbq85NcMkYDop51F4B4YULpSO7IOTHyo/sQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bohdan\\OneDrive\\Рабочий стол\\traineeship\\Moving_Figures_WPF\\task1\\task1.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Bohdan\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

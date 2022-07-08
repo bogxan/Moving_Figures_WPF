@@ -1,8 +1,11 @@
 ﻿namespace Task1
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.IO;
     using System.Linq;
     using System.Resources;
     using System.Text;
@@ -17,13 +20,14 @@
     using System.Windows.Media.Imaging;
     using System.Windows.Navigation;
     using System.Windows.Shapes;
+    using Task1.Models;
 
     public partial class MainWindow : Window
     {
         private readonly List<MyFigure> figuresInProgram = new();
         private Point sizeOfCanvas = new();
         private readonly Random rnd = new();
-        private int countTria = 0, countRect = 0, countCirc = 0;
+        private int countTria = 0, countRect = 0, countCirc = 0, countAll = 0;
         private TreeViewItem selectedNode = new();
 
         public MainWindow()
@@ -125,11 +129,13 @@
         private void AddTriangleBtn_Click(object sender, RoutedEventArgs e)
         {
             this.countTria++;
+            this.countAll++;
             TreeViewItem addNode = new();
             addNode.Header = FindResource("m_treeViewItemTria").ToString()+$" {this.countTria}";
             addNode.Name = $"Triangle_{this.countTria}";
             treeViewItemTriangle.Items.Add(addNode);
             MyTriangle triangle = new(50, 150, 150, 50, 250, 150);
+            triangle.Id = countAll;
             triangle.Name = $"Triangle_{this.countTria}";
             triangle.IsMoving = true;
             triangle.Draw();
@@ -143,11 +149,13 @@
         private void AddCircleBtn_Click(object sender, RoutedEventArgs e)
         {
             this.countCirc++;
+            this.countAll++;
             TreeViewItem addNode = new();
             addNode.Header = FindResource("m_treeViewItemCirc").ToString()+$" {this.countCirc}";
             addNode.Name = $"Circle_{this.countCirc}";
             treeViewItemCircle.Items.Add(addNode);
             MyCircle circle = new(50, 100, 100);
+            circle.Id = countAll;
             circle.Name = $"Circle_{this.countCirc}";
             circle.IsMoving = true;
             circle.Draw();
@@ -161,11 +169,13 @@
         private void AddRectangleBtn_Click(object sender, RoutedEventArgs e)
         {
             this.countRect++;
+            this.countAll++;
             TreeViewItem addNode = new();
             addNode.Header = FindResource("m_treeViewItemRect").ToString()+$" {this.countRect}";
             addNode.Name = $"Rectangle_{this.countRect}";
             treeViewItemRectangle.Items.Add(addNode);
             MyRectangle rectangle = new(200, 200, 300, 300);
+            rectangle.Id = countAll;
             rectangle.Name = $"Rectangle_{this.countRect}";
             rectangle.IsMoving = true;
             rectangle.Draw();
@@ -211,6 +221,131 @@
                         startBtn.IsEnabled = true;
                     }
                 }
+            }
+        }
+
+        private void saveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
+            try
+            {
+                using (StreamWriter sw = new StreamWriter("figures.json"))
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    if (figuresInProgram.Count <= 0)
+                    {
+                        throw new Exception();
+                    }
+                    else
+                    {
+                        for (int i = 0; i < figuresInProgram.Count; i++)
+                        {
+                            figuresInProgram[i].Serialize(serializer, writer);
+                        }
+                    }
+                    MessageBox.Show("Successfully saved!");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error!");
+            }
+        }
+
+        private void loadBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var fileContent = File.ReadAllText("figures.json");
+                if (fileContent.Length <= 0)
+                {
+                    throw new Exception();
+                }
+                else
+                {
+                    countAll = countCirc = countRect = countTria = 0;
+                    treeViewItemCircle.Items.Clear();
+                    treeViewItemRectangle.Items.Clear();
+                    treeViewItemTriangle.Items.Clear();
+                    canvasFigures.Children.Clear();
+                    figuresInProgram.Clear();
+                    fileContent = fileContent.Trim('"');
+                    string[] words = fileContent.Split(@"""");
+                    for (int i = 0; i < words.Length; i += 2)
+                    {
+                        Console.WriteLine(words[i]);
+                        string[] parts = words[i].Split(" ");
+                        if (parts[1].Contains("Triangle"))
+                        {
+                            TreeViewItem addNode = new();
+                            string[] parts_name = parts[1].Split("_");
+                            countTria = int.Parse(parts_name[1]);
+                            countAll = int.Parse(parts[0]);
+                            addNode.Header = FindResource("m_treeViewItemTria").ToString() + $" {parts_name[1]}";
+                            addNode.Name = parts[1];
+                            treeViewItemTriangle.Items.Add(addNode);
+                            treeViewItemTriangle.Items.Refresh();
+                            treeViewItemFigures.Items.Refresh();
+                            MyTriangle triangle = new(int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]), int.Parse(parts[6]), int.Parse(parts[7]), int.Parse(parts[8]));
+                            triangle.Id = int.Parse(parts[0]);
+                            triangle.Name = parts[1];
+                            triangle.IsMoving = bool.Parse(parts[2]);
+                            triangle.Draw();
+                            this.figuresInProgram.Add(triangle);
+                            Canvas.SetLeft(triangle.Shape, triangle.X1);
+                            Canvas.SetTop(triangle.Shape, triangle.Y1);
+                            canvasFigures.Children.Add(triangle.Shape);
+                        }
+                        else if (parts[1].Contains("Circle"))
+                        {
+                            TreeViewItem addNode = new();
+                            string[] parts_name = parts[1].Split("_");
+                            countCirc = int.Parse(parts_name[1]);
+                            countAll = int.Parse(parts[0]);
+                            addNode.Header = FindResource("m_treeViewItemCirc").ToString() + $" {parts_name[1]}";
+                            addNode.Name = parts[1];
+                            treeViewItemCircle.Items.Add(addNode);
+                            treeViewItemCircle.Items.Refresh();
+                            treeViewItemFigures.Items.Refresh();
+                            MyCircle circle = new(int.Parse(parts[5]), int.Parse(parts[3]), int.Parse(parts[4]));
+                            circle.Id = int.Parse(parts[0]);
+                            circle.Name = parts[1];
+                            circle.IsMoving = bool.Parse(parts[2]);
+                            circle.Draw();
+                            this.figuresInProgram.Add(circle);
+                            Canvas.SetLeft(circle.Shape, circle.X1);
+                            Canvas.SetTop(circle.Shape, circle.Y1);
+                            canvasFigures.Children.Add(circle.Shape);
+                        }
+                        else
+                        {
+                            TreeViewItem addNode = new();
+                            string[] parts_name = parts[1].Split("_");
+                            countRect = int.Parse(parts_name[1]);
+                            countAll = int.Parse(parts[0]);
+                            addNode.Header = FindResource("m_treeViewItemRect").ToString() + $" {parts_name[1]}";
+                            addNode.Name = parts[1];
+                            treeViewItemRectangle.Items.Add(addNode);
+                            treeViewItemRectangle.Items.Refresh();
+                            treeViewItemFigures.Items.Refresh();
+                            MyRectangle rectangle = new(int.Parse(parts[5]), int.Parse(parts[6]), int.Parse(parts[3]), int.Parse(parts[4]));
+                            rectangle.Id = int.Parse(parts[0]);
+                            rectangle.Name = parts[1];
+                            rectangle.IsMoving = bool.Parse(parts[2]);
+                            rectangle.Draw();
+                            this.figuresInProgram.Add(rectangle);
+                            Canvas.SetLeft(rectangle.Shape, rectangle.X1);
+                            Canvas.SetTop(rectangle.Shape, rectangle.Y1);
+                            canvasFigures.Children.Add(rectangle.Shape);
+                        }
+                    }
+                    MessageBox.Show("Successfully loaded!");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error!");
             }
         }
 

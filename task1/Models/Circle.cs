@@ -1,5 +1,6 @@
-﻿namespace Task1
+﻿namespace Task1.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Drawing;
@@ -9,6 +10,7 @@
     using System.Windows.Media;
     using System.Windows.Shapes;
 
+    [Serializable]
     public class MyCircle : MyFigure
     {
         public MyCircle(int radius, int x, int y)
@@ -17,6 +19,10 @@
             this.X1 = x;
             this.Y1 = y;
         }
+
+        public int X1 { get; set; }
+
+        public int Y1 { get; set; }
 
         public int Radius { get; set; }
 
@@ -29,6 +35,12 @@
             circle.StrokeThickness = 1;
             circle.Fill = new SolidColorBrush(Colors.Red);
             this.Shape = circle;
+        }
+
+        public override void Serialize(JsonSerializer serializer, JsonWriter writer)
+        {
+            serializer.Serialize(writer, this.Id + " " + this.Name + " " + this.IsMoving 
+                + " " + this.X1 + " " + this.Y1 + " " + this.Radius);
         }
     }
 }

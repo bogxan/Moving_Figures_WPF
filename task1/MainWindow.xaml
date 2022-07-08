@@ -16,17 +16,21 @@
             <RowDefinition Height="150"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Yellow">
-            <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
-        </Menu>
+        <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="0">
+            <Button BorderBrush="Black" BorderThickness="1px" Background="Cyan" Width="100px" Height="30px" Margin="10px" Name="saveBtn" Click="saveBtn_Click" Content="{DynamicResource m_btnSave}"></Button>
+            <Button BorderBrush="Black" BorderThickness="1px" Background="Cyan" Width="100px" Height="30px" Margin="10px" Name="loadBtn" Click="loadBtn_Click"  Content="{DynamicResource m_btnLoad}"></Button>
+            <Menu BorderBrush="Black" BorderThickness="1px" Height="30px" Margin="10px" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Yellow">
+                <MenuItem Height="30px" x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
+            </Menu>
+        </StackPanel>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
-            <Button Background="Yellow" Width="90px" Height="50px" Margin="20px" Name="addTriangleBtn" Click="AddTriangleBtn_Click" Content="{DynamicResource m_btnTriangle}"></Button>
-            <Button Background="Yellow" Width="90px" Height="50px" Margin="20px" Name="addCircleBtn" Click="AddCircleBtn_Click" Content="{DynamicResource m_btnCircle}"></Button>
-            <Button Background="Yellow" Width="90px" Height="50px" Margin="20px" Name="addRectangleBtn" Click="AddRectangleBtn_Click" Content="{DynamicResource m_btnRectangle}"></Button>
+            <Button BorderBrush="Black" BorderThickness="1px" Background="Yellow" Width="90px" Height="50px" Margin="20px" Name="addTriangleBtn" Click="AddTriangleBtn_Click" Content="{DynamicResource m_btnTriangle}"></Button>
+            <Button BorderBrush="Black" BorderThickness="1px" Background="Yellow" Width="90px" Height="50px" Margin="20px" Name="addCircleBtn" Click="AddCircleBtn_Click" Content="{DynamicResource m_btnCircle}"></Button>
+            <Button BorderBrush="Black" BorderThickness="1px" Background="Yellow" Width="90px" Height="50px" Margin="20px" Name="addRectangleBtn" Click="AddRectangleBtn_Click" Content="{DynamicResource m_btnRectangle}"></Button>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
-            <Button Background="LightGreen" Width="100px" Height="50px" Margin="20px" Name="startBtn" Click="StartBtn_Click" Content="{DynamicResource m_btnStart}"></Button>
-            <Button Background="LightGreen" Width="100px" Height="50px" Margin="20px" Name="stopBtn" Click="StopBtn_Click"  Content="{DynamicResource m_btnStop}"></Button>
+            <Button BorderBrush="Black" BorderThickness="1px" Background="LightGreen" Width="100px" Height="50px" Margin="20px" Name="startBtn" Click="StartBtn_Click" Content="{DynamicResource m_btnStart}"></Button>
+            <Button BorderBrush="Black" BorderThickness="1px" Background="LightGreen" Width="100px" Height="50px" Margin="20px" Name="stopBtn" Click="StopBtn_Click"  Content="{DynamicResource m_btnStop}"></Button>
         </StackPanel>
         <TreeView SelectedItemChanged="TreeView_SelectedItemChanged" BorderThickness="0" Background="Bisque" Grid.Row="1" Grid.Column="0">
             <TreeViewItem IsExpanded="True" Background="Yellow" Name="treeViewItemFigures" Header="{DynamicResource m_treeViewFigures}">
