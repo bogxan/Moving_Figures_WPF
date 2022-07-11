@@ -3,10 +3,15 @@
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using System.Runtime.Serialization.Formatters.Binary;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Media;
+    using System.Windows.Media.Animation;
     using System.Windows.Shapes;
 
     [Serializable]
@@ -39,7 +44,20 @@
             this.Shape = rectangle;
         }
 
-        public override void Serialize(JsonSerializer serializer, JsonWriter writer)
+        public override void Move(Point sizeOfCanvas)
+        {
+            Random rnd = new Random();
+            X1 = rnd.Next(Convert.ToInt32(sizeOfCanvas.X - Shape.ActualWidth));
+            Y1 = rnd.Next(Convert.ToInt32(sizeOfCanvas.Y - Shape.ActualHeight));
+            DoubleAnimation animLeft = new(Canvas.GetLeft(Shape), X1, new Duration(TimeSpan.FromSeconds(0.5)));
+            DoubleAnimation animTop = new(Canvas.GetTop(Shape), Y1, new Duration(TimeSpan.FromSeconds(0.5)));
+            animLeft.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut };
+            animTop.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut };
+            Shape.BeginAnimation(Canvas.LeftProperty, animLeft, HandoffBehavior.SnapshotAndReplace);
+            Shape.BeginAnimation(Canvas.TopProperty, animTop, HandoffBehavior.SnapshotAndReplace);
+        }
+
+        public override void SerializeJSON(JsonSerializer serializer, JsonWriter writer)
         {
             serializer.Serialize(writer, this.Id + " " + this.Name + " " + this.IsMoving + " " 
                 + this.X1 + " " + this.Y1 + " " + this.Width + " " + this.Height);

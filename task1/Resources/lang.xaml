@@ -7,8 +7,15 @@
     <v:String x:Key="m_btnCircle">Circle</v:String>
     <v:String x:Key="m_btnStart">Start moving</v:String>
     <v:String x:Key="m_btnStop">Stop moving</v:String>
+    <v:String x:Key="m_btnFile">File</v:String>
     <v:String x:Key="m_btnSave">Save</v:String>
+    <v:String x:Key="m_btnSaveBin">.bin</v:String>
+    <v:String x:Key="m_btnSaveJSON">.json</v:String>
+    <v:String x:Key="m_btnSaveXML">.xml</v:String>
     <v:String x:Key="m_btnLoad">Load</v:String>
+    <v:String x:Key="m_btnLoadBin">.bin</v:String>
+    <v:String x:Key="m_btnLoadJSON">.json</v:String>
+    <v:String x:Key="m_btnLoadXml">.xml</v:String>
     <v:String x:Key="m_treeViewItemTria">Triangle</v:String>
     <v:String x:Key="m_treeViewItemRect">Rectangle</v:String>
     <v:String x:Key="m_treeViewItemCirc">Circle</v:String>

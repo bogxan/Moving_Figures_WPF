@@ -8,6 +8,7 @@
     using System.IO;
     using System.Linq;
     using System.Resources;
+    using System.Runtime.Serialization.Formatters.Binary;
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
@@ -111,6 +112,7 @@
                 {
                     if (item.IsMoving)
                     {
+                        //item.Move(this.sizeOfCanvas);
                         double newLeft = this.rnd.Next(Convert.ToInt32(this.sizeOfCanvas.X - item.Shape.ActualWidth));
                         double newTop = this.rnd.Next(Convert.ToInt32(this.sizeOfCanvas.Y - item.Shape.ActualHeight));
                         DoubleAnimation animLeft = new(Canvas.GetLeft(item.Shape), newLeft, new Duration(TimeSpan.FromSeconds(0.5)));
@@ -224,28 +226,87 @@
             }
         }
 
-        private void saveBtn_Click(object sender, RoutedEventArgs e)
+        private void btnLoadBin_Click(object sender, RoutedEventArgs e)
         {
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
             try
             {
-                using (StreamWriter sw = new StreamWriter("figures.json"))
-                using (JsonWriter writer = new JsonTextWriter(sw))
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream fs = File.Open("figures.dat", FileMode.Open);
+                object obj = formatter.Deserialize(fs);
+                List<MyFigure> figures = (List<MyFigure>)obj;
+                if (figures.Count > 0)
                 {
-                    if (figuresInProgram.Count <= 0)
+                    countAll = countCirc = countRect = countTria = 0;
+                    treeViewItemCircle.Items.Clear();
+                    treeViewItemRectangle.Items.Clear();
+                    treeViewItemTriangle.Items.Clear();
+                    canvasFigures.Children.Clear();
+                    figuresInProgram.Clear();
+                    figuresInProgram.AddRange(figures);
+                    for (int i = 0; i < figuresInProgram.Count; i++)
                     {
-                        throw new Exception();
-                    }
-                    else
-                    {
-                        for (int i = 0; i < figuresInProgram.Count; i++)
+                        if (figuresInProgram[i].Name.Contains("Triangle"))
                         {
-                            figuresInProgram[i].Serialize(serializer, writer);
+                            MyTriangle triangle = figuresInProgram[i] as MyTriangle;
+                            triangle.Draw();
+                            TreeViewItem addNode = new();
+                            string[] prts = triangle.Name.Split("_");
+                            countTria = int.Parse(prts[1]);
+                            countAll = triangle.Id;
+                            addNode.Header = FindResource("m_treeViewItemTria").ToString() + $" {countTria}";
+                            addNode.Name = triangle.Name;
+                            Canvas.SetLeft(triangle.Shape, triangle.X1);
+                            Canvas.SetTop(triangle.Shape, triangle.Y1);
+                            canvasFigures.Children.Add(triangle.Shape);
+                            treeViewItemTriangle.Items.Add(addNode);
+                            treeViewItemTriangle.Items.Refresh();
+                            treeViewItemFigures.Items.Refresh();
+                        }
+                        else if (figuresInProgram[i].Name.Contains("Circle"))
+                        {
+                            MyCircle circle = figuresInProgram[i] as MyCircle;
+                            circle.Draw();
+                            TreeViewItem addNode = new();
+                            string[] prts = circle.Name.Split("_");
+                            countCirc = int.Parse(prts[1]);
+                            countAll = circle.Id;
+                            addNode.Header = FindResource("m_treeViewItemCirc").ToString() + $" {countCirc}";
+                            addNode.Name = $"Circle_{this.countCirc}";
+                            Canvas.SetLeft(circle.Shape, circle.X1);
+                            Canvas.SetTop(circle.Shape, circle.Y1);
+                            canvasFigures.Children.Add(circle.Shape);
+                            treeViewItemCircle.Items.Add(addNode);
+                            treeViewItemCircle.Items.Refresh();
+                            treeViewItemFigures.Items.Refresh();
+                        }
+                        else
+                        {
+                            MyRectangle rectangle = figuresInProgram[i] as MyRectangle;
+                            rectangle.Draw();
+                            TreeViewItem addNode = new();
+                            string[] prts = rectangle.Name.Split("_");
+                            countRect = int.Parse(prts[1]);
+                            countAll = rectangle.Id;
+                            addNode.Header = FindResource("m_treeViewItemRect").ToString() + $" {countRect}";
+                            addNode.Name = $"Rectangle_{this.countRect}";
+                            Canvas.SetLeft(rectangle.Shape, rectangle.X1);
+                            Canvas.SetTop(rectangle.Shape, rectangle.Y1);
+                            canvasFigures.Children.Add(rectangle.Shape);
+                            treeViewItemRectangle.Items.Add(addNode);
+                            treeViewItemRectangle.Items.Refresh();
+                            treeViewItemFigures.Items.Refresh();
                         }
                     }
-                    MessageBox.Show("Successfully saved!");
+                    fs.Flush();
+                    fs.Close();
+                    fs.Dispose();
+                    MessageBox.Show("Successfully loaded!");
                 }
+                else
+                {
+                    throw new Exception();
+                }
+
             }
             catch (Exception)
             {
@@ -253,7 +314,7 @@
             }
         }
 
-        private void loadBtn_Click(object sender, RoutedEventArgs e)
+        private void btnLoadJSON_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -349,31 +410,98 @@
             }
         }
 
+        private void btnLoadXML_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Loading from XML will be added in next versions!");
+        }
+
+        private void btnSaveBin_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (figuresInProgram.Count > 0)
+                {
+                    Stream ms = File.OpenWrite("figures.dat");
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    formatter.Serialize(ms, figuresInProgram);
+                    ms.Flush();
+                    ms.Close();
+                    ms.Dispose();
+                    MessageBox.Show("Successfully saved!");
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error!");
+            }
+        }
+
+        private void btnSaveJSON_Click(object sender, RoutedEventArgs e)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
+            try
+            {
+                using (StreamWriter sw = new StreamWriter("figures.json"))
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    if (figuresInProgram.Count <= 0)
+                    {
+                        throw new Exception();
+                    }
+                    else
+                    {
+                        for (int i = 0; i < figuresInProgram.Count; i++)
+                        {
+                            figuresInProgram[i].SerializeJSON(serializer, writer);
+                        }
+                    }
+                    MessageBox.Show("Successfully saved!");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error!");
+            }
+        }
+
+        private void btnSaveXML_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Saving in XML will be added in next versions!");
+        }
+
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            for (int i = 0; i < figuresInProgram.Count; i++)
-            {
-                figuresInProgram[i].Shape.Stroke = new SolidColorBrush(Colors.Black);
-                figuresInProgram[i].Shape.StrokeThickness = 1;
-            }
-            selectedNode = e.NewValue as TreeViewItem;
-            if (selectedNode != null)
+            if (figuresInProgram.Count > 0)
             {
                 for (int i = 0; i < figuresInProgram.Count; i++)
                 {
-                    if (figuresInProgram[i].Name == selectedNode.Name)
+                    figuresInProgram[i].Shape.Stroke = new SolidColorBrush(Colors.Black);
+                    figuresInProgram[i].Shape.StrokeThickness = 1;
+                }
+                selectedNode = e.NewValue as TreeViewItem;
+                if (selectedNode != null)
+                {
+                    for (int i = 0; i < figuresInProgram.Count; i++)
                     {
-                        figuresInProgram[i].Shape.Stroke = new SolidColorBrush(Colors.Yellow);
-                        figuresInProgram[i].Shape.StrokeThickness = 5;
-                        if (figuresInProgram[i].IsMoving)
+                        if (figuresInProgram[i].Name == selectedNode.Name)
                         {
-                            stopBtn.IsEnabled = true;
-                            startBtn.IsEnabled = false;
-                        }
-                        else
-                        {
-                            stopBtn.IsEnabled = false;
-                            startBtn.IsEnabled = true;
+                            figuresInProgram[i].Shape.Stroke = new SolidColorBrush(Colors.Yellow);
+                            figuresInProgram[i].Shape.StrokeThickness = 5;
+                            if (figuresInProgram[i].IsMoving)
+                            {
+                                stopBtn.IsEnabled = true;
+                                startBtn.IsEnabled = false;
+                            }
+                            else
+                            {
+                                stopBtn.IsEnabled = false;
+                                startBtn.IsEnabled = true;
+                            }
                         }
                     }
                 }
