@@ -134,7 +134,7 @@
             this.countTria++;
             this.countAll++;
             TreeViewItem addNode = new();
-            addNode.Header = FindResource("m_treeViewItemTria").ToString()+$" {this.countTria}";
+            addNode.Header = FindResource("m_treeViewItemTria").ToString() + $" {this.countTria}";
             addNode.Name = $"Triangle_{this.countTria}";
             treeViewItemTriangle.Items.Add(addNode);
             MyTriangle triangle = new(50, 150, 150, 50, 250, 150);
@@ -154,7 +154,7 @@
             this.countCirc++;
             this.countAll++;
             TreeViewItem addNode = new();
-            addNode.Header = FindResource("m_treeViewItemCirc").ToString()+$" {this.countCirc}";
+            addNode.Header = FindResource("m_treeViewItemCirc").ToString() + $" {this.countCirc}";
             addNode.Name = $"Circle_{this.countCirc}";
             treeViewItemCircle.Items.Add(addNode);
             MyCircle circle = new(50, 100, 100);
@@ -174,7 +174,7 @@
             this.countRect++;
             this.countAll++;
             TreeViewItem addNode = new();
-            addNode.Header = FindResource("m_treeViewItemRect").ToString()+$" {this.countRect}";
+            addNode.Header = FindResource("m_treeViewItemRect").ToString() + $" {this.countRect}";
             addNode.Name = $"Rectangle_{this.countRect}";
             treeViewItemRectangle.Items.Add(addNode);
             MyRectangle rectangle = new(200, 200, 300, 300);
@@ -326,83 +326,80 @@
                 }
                 else
                 {
-                    countAll = countCirc = countRect = countTria = 0;
-                    treeViewItemCircle.Items.Clear();
-                    treeViewItemRectangle.Items.Clear();
-                    treeViewItemTriangle.Items.Clear();
-                    canvasFigures.Children.Clear();
-                    figuresInProgram.Clear();
-                    fileContent = fileContent.Trim('"');
-                    string[] words = fileContent.Split(@"""");
-                    for (int i = 0; i < words.Length; i += 2)
+                    var settings = new JsonSerializerSettings()
                     {
-                        Console.WriteLine(words[i]);
-                        string[] parts = words[i].Split(" ");
-                        if (parts[1].Contains("Triangle"))
+                        TypeNameHandling = TypeNameHandling.Objects
+                    };
+                    List<MyFigure> figures = JsonConvert.DeserializeObject<List<MyFigure>>(fileContent, settings);
+                    if (figures.Count > 0)
+                    {
+                        countAll = countCirc = countRect = countTria = 0;
+                        treeViewItemCircle.Items.Clear();
+                        treeViewItemRectangle.Items.Clear();
+                        treeViewItemTriangle.Items.Clear();
+                        canvasFigures.Children.Clear();
+                        figuresInProgram.Clear();
+                        figuresInProgram.AddRange(figures.ToList());
+                        for (int i = 0; i < figuresInProgram.Count; i++)
                         {
-                            TreeViewItem addNode = new();
-                            string[] parts_name = parts[1].Split("_");
-                            countTria = int.Parse(parts_name[1]);
-                            countAll = int.Parse(parts[0]);
-                            addNode.Header = FindResource("m_treeViewItemTria").ToString() + $" {parts_name[1]}";
-                            addNode.Name = parts[1];
-                            treeViewItemTriangle.Items.Add(addNode);
-                            treeViewItemTriangle.Items.Refresh();
-                            treeViewItemFigures.Items.Refresh();
-                            MyTriangle triangle = new(int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]), int.Parse(parts[6]), int.Parse(parts[7]), int.Parse(parts[8]));
-                            triangle.Id = int.Parse(parts[0]);
-                            triangle.Name = parts[1];
-                            triangle.IsMoving = bool.Parse(parts[2]);
-                            triangle.Draw();
-                            this.figuresInProgram.Add(triangle);
-                            Canvas.SetLeft(triangle.Shape, triangle.X1);
-                            Canvas.SetTop(triangle.Shape, triangle.Y1);
-                            canvasFigures.Children.Add(triangle.Shape);
+                            if (figuresInProgram[i].Name.Contains("Triangle"))
+                            {
+                                MyTriangle triangle = figuresInProgram[i] as MyTriangle;
+                                triangle.Draw();
+                                TreeViewItem addNode = new();
+                                string[] prts = triangle.Name.Split("_");
+                                countTria = int.Parse(prts[1]);
+                                countAll = triangle.Id;
+                                addNode.Header = FindResource("m_treeViewItemTria").ToString() + $" {countTria}";
+                                addNode.Name = triangle.Name;
+                                Canvas.SetLeft(triangle.Shape, triangle.X1);
+                                Canvas.SetTop(triangle.Shape, triangle.Y1);
+                                canvasFigures.Children.Add(triangle.Shape);
+                                treeViewItemTriangle.Items.Add(addNode);
+                                treeViewItemTriangle.Items.Refresh();
+                                treeViewItemFigures.Items.Refresh();
+                            }
+                            else if (figuresInProgram[i].Name.Contains("Circle"))
+                            {
+                                MyCircle circle = figuresInProgram[i] as MyCircle;
+                                circle.Draw();
+                                TreeViewItem addNode = new();
+                                string[] prts = circle.Name.Split("_");
+                                countCirc = int.Parse(prts[1]);
+                                countAll = circle.Id;
+                                addNode.Header = FindResource("m_treeViewItemCirc").ToString() + $" {countCirc}";
+                                addNode.Name = $"Circle_{this.countCirc}";
+                                Canvas.SetLeft(circle.Shape, circle.X1);
+                                Canvas.SetTop(circle.Shape, circle.Y1);
+                                canvasFigures.Children.Add(circle.Shape);
+                                treeViewItemCircle.Items.Add(addNode);
+                                treeViewItemCircle.Items.Refresh();
+                                treeViewItemFigures.Items.Refresh();
+                            }
+                            else
+                            {
+                                MyRectangle rectangle = figuresInProgram[i] as MyRectangle;
+                                rectangle.Draw();
+                                TreeViewItem addNode = new();
+                                string[] prts = rectangle.Name.Split("_");
+                                countRect = int.Parse(prts[1]);
+                                countAll = rectangle.Id;
+                                addNode.Header = FindResource("m_treeViewItemRect").ToString() + $" {countRect}";
+                                addNode.Name = $"Rectangle_{this.countRect}";
+                                Canvas.SetLeft(rectangle.Shape, rectangle.X1);
+                                Canvas.SetTop(rectangle.Shape, rectangle.Y1);
+                                canvasFigures.Children.Add(rectangle.Shape);
+                                treeViewItemRectangle.Items.Add(addNode);
+                                treeViewItemRectangle.Items.Refresh();
+                                treeViewItemFigures.Items.Refresh();
+                            }
                         }
-                        else if (parts[1].Contains("Circle"))
-                        {
-                            TreeViewItem addNode = new();
-                            string[] parts_name = parts[1].Split("_");
-                            countCirc = int.Parse(parts_name[1]);
-                            countAll = int.Parse(parts[0]);
-                            addNode.Header = FindResource("m_treeViewItemCirc").ToString() + $" {parts_name[1]}";
-                            addNode.Name = parts[1];
-                            treeViewItemCircle.Items.Add(addNode);
-                            treeViewItemCircle.Items.Refresh();
-                            treeViewItemFigures.Items.Refresh();
-                            MyCircle circle = new(int.Parse(parts[5]), int.Parse(parts[3]), int.Parse(parts[4]));
-                            circle.Id = int.Parse(parts[0]);
-                            circle.Name = parts[1];
-                            circle.IsMoving = bool.Parse(parts[2]);
-                            circle.Draw();
-                            this.figuresInProgram.Add(circle);
-                            Canvas.SetLeft(circle.Shape, circle.X1);
-                            Canvas.SetTop(circle.Shape, circle.Y1);
-                            canvasFigures.Children.Add(circle.Shape);
-                        }
-                        else
-                        {
-                            TreeViewItem addNode = new();
-                            string[] parts_name = parts[1].Split("_");
-                            countRect = int.Parse(parts_name[1]);
-                            countAll = int.Parse(parts[0]);
-                            addNode.Header = FindResource("m_treeViewItemRect").ToString() + $" {parts_name[1]}";
-                            addNode.Name = parts[1];
-                            treeViewItemRectangle.Items.Add(addNode);
-                            treeViewItemRectangle.Items.Refresh();
-                            treeViewItemFigures.Items.Refresh();
-                            MyRectangle rectangle = new(int.Parse(parts[5]), int.Parse(parts[6]), int.Parse(parts[3]), int.Parse(parts[4]));
-                            rectangle.Id = int.Parse(parts[0]);
-                            rectangle.Name = parts[1];
-                            rectangle.IsMoving = bool.Parse(parts[2]);
-                            rectangle.Draw();
-                            this.figuresInProgram.Add(rectangle);
-                            Canvas.SetLeft(rectangle.Shape, rectangle.X1);
-                            Canvas.SetTop(rectangle.Shape, rectangle.Y1);
-                            canvasFigures.Children.Add(rectangle.Shape);
-                        }
+                        MessageBox.Show("Successfully loaded!");
                     }
-                    MessageBox.Show("Successfully loaded!");
+                    else
+                    {
+                        throw new Exception();
+                    }
                 }
             }
             catch (Exception)
@@ -419,6 +416,7 @@
                 {
                     var serializer = new XmlSerializer(typeof(List<MyFigure>));
                     List<MyFigure> figures = serializer.Deserialize(fs) as List<MyFigure>;
+                    ;
                     if (figures.Count > 0)
                     {
                         countAll = countCirc = countRect = countTria = 0;
@@ -523,25 +521,33 @@
 
         private void btnSaveJSON_Click(object sender, RoutedEventArgs e)
         {
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
             try
             {
                 using (StreamWriter sw = new StreamWriter("figures.json"))
-                using (JsonWriter writer = new JsonTextWriter(sw))
                 {
-                    if (figuresInProgram.Count <= 0)
+                    if (figuresInProgram.Count > 0)
                     {
-                        throw new Exception();
+                        var settings = new JsonSerializerSettings()
+                        {
+                            TypeNameHandling = TypeNameHandling.Objects
+                        };
+                        string str = "[";
+                        for (int i = 0; i < figuresInProgram.Count; i++)
+                        {
+                            str += JsonConvert.SerializeObject(figuresInProgram[i], settings);
+                            if (i < figuresInProgram.Count - 1)
+                            {
+                                str += ",";
+                            }
+                        }
+                        str += "]";
+                        sw.Write(str);
+                        MessageBox.Show("Successfully saved!");
                     }
                     else
                     {
-                        for (int i = 0; i < figuresInProgram.Count; i++)
-                        {
-                            figuresInProgram[i].SerializeJSON(serializer, writer);
-                        }
+                        throw new Exception();
                     }
-                    MessageBox.Show("Successfully saved!");
                 }
             }
             catch (Exception)
@@ -557,16 +563,16 @@
                 var serializer = new XmlSerializer(typeof(List<MyFigure>));
                 using (TextWriter writer = new StreamWriter("figures.xml"))
                 {
-                    if (figuresInProgram.Count <= 0)
+                    if (figuresInProgram.Count > 0)
                     {
-                        throw new Exception();
+                        serializer.Serialize(writer, figuresInProgram);
+                        MessageBox.Show("Successfully saved!");
                     }
                     else
                     {
-                        serializer.Serialize(writer, figuresInProgram);
+                        throw new Exception();
                     }
                 }
-                MessageBox.Show("Successfully saved!");
             }
             catch (Exception)
             {

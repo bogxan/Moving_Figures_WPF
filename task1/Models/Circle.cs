@@ -59,11 +59,5 @@
             Shape.BeginAnimation(Canvas.LeftProperty, animLeft, HandoffBehavior.SnapshotAndReplace);
             Shape.BeginAnimation(Canvas.TopProperty, animTop, HandoffBehavior.SnapshotAndReplace);
         }
-
-        public override void SerializeJSON(JsonSerializer serializer, JsonWriter writer)
-        {
-            serializer.Serialize(writer, this.Id + " " + this.Name + " " + this.IsMoving 
-                + " " + this.X1 + " " + this.Y1 + " " + this.Radius);
-        }
     }
 }

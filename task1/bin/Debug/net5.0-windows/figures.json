@@ -1,1 +1,58 @@
-"1 Triangle_1 True 50 150 150 50 250 150""2 Triangle_2 True 50 150 150 50 250 150""3 Triangle_3 True 50 150 150 50 250 150""4 Triangle_4 False 50 150 150 50 250 150""5 Circle_1 False 100 100 50""6 Circle_2 True 100 100 50""7 Circle_3 False 100 100 50""8 Circle_4 True 100 100 50""9 Circle_5 True 100 100 50""10 Rectangle_1 True 300 300 200 200""11 Rectangle_2 True 300 300 200 200""12 Rectangle_3 True 300 300 200 200""13 Rectangle_4 False 300 300 200 200""14 Rectangle_5 True 300 300 200 200""15 Triangle_5 True 50 150 150 50 250 150""16 Triangle_6 True 50 150 150 50 250 150""17 Triangle_7 True 50 150 150 50 250 150""18 Triangle_8 True 50 150 150 50 250 150""19 Circle_6 True 100 100 50""20 Circle_7 True 100 100 50""21 Circle_8 True 100 100 50""22 Circle_9 True 100 100 50""23 Rectangle_6 True 300 300 200 200""24 Rectangle_7 True 300 300 200 200""25 Rectangle_8 True 300 300 200 200""26 Rectangle_9 True 300 300 200 200""27 Rectangle_10 True 300 300 200 200""28 Rectangle_11 True 300 300 200 200""29 Rectangle_12 True 300 300 200 200""30 Rectangle_13 True 300 300 200 200""31 Circle_10 True 100 100 50""32 Circle_11 True 100 100 50""33 Circle_12 True 100 100 50""34 Circle_13 True 100 100 50""35 Triangle_9 True 50 150 150 50 250 150""36 Triangle_10 True 50 150 150 50 250 150""37 Triangle_11 True 50 150 150 50 250 150""38 Triangle_12 True 50 150 150 50 250 150""39 Triangle_13 True 50 150 150 50 250 150""40 Triangle_14 True 50 150 150 50 250 150"
+[{
+        "$type": "Task1.Models.MyTriangle, task1",
+        "X1": 50,
+        "Y1": 150,
+        "X2": 150,
+        "Y2": 50,
+        "X3": 250,
+        "Y3": 150,
+        "Id": 1,
+        "Name": "Triangle_1",
+        "IsMoving": true
+    }, {
+        "$type": "Task1.Models.MyCircle, task1",
+        "X1": 100,
+        "Y1": 100,
+        "Radius": 50,
+        "Id": 2,
+        "Name": "Circle_1",
+        "IsMoving": true
+    }, {
+        "$type": "Task1.Models.MyRectangle, task1",
+        "X1": 300,
+        "Y1": 300,
+        "Width": 200,
+        "Height": 200,
+        "Id": 3,
+        "Name": "Rectangle_1",
+        "IsMoving": true
+    }, {
+        "$type": "Task1.Models.MyTriangle, task1",
+        "X1": 50,
+        "Y1": 150,
+        "X2": 150,
+        "Y2": 50,
+        "X3": 250,
+        "Y3": 150,
+        "Id": 4,
+        "Name": "Triangle_2",
+        "IsMoving": true
+    }, {
+        "$type": "Task1.Models.MyCircle, task1",
+        "X1": 100,
+        "Y1": 100,
+        "Radius": 50,
+        "Id": 5,
+        "Name": "Circle_2",
+        "IsMoving": true
+    }, {
+        "$type": "Task1.Models.MyRectangle, task1",
+        "X1": 300,
+        "Y1": 300,
+        "Width": 200,
+        "Height": 200,
+        "Id": 6,
+        "Name": "Rectangle_2",
+        "IsMoving": true
+    }
+]

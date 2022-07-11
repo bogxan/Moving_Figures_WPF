@@ -11,31 +11,26 @@
     <X3>250</X3>
     <Y3>150</Y3>
   </MyFigure>
-  <MyFigure xsi:type="MyTriangle">
+  <MyFigure xsi:type="MyCircle">
     <Id>2</Id>
-    <Name>Triangle_2</Name>
+    <Name>Circle_1</Name>
     <IsMoving>true</IsMoving>
-    <X1>50</X1>
-    <Y1>150</Y1>
-    <X2>150</X2>
-    <Y2>50</Y2>
-    <X3>250</X3>
-    <Y3>150</Y3>
+    <X1>100</X1>
+    <Y1>100</Y1>
+    <Radius>50</Radius>
   </MyFigure>
-  <MyFigure xsi:type="MyTriangle">
+  <MyFigure xsi:type="MyRectangle">
     <Id>3</Id>
-    <Name>Triangle_3</Name>
+    <Name>Rectangle_1</Name>
     <IsMoving>true</IsMoving>
-    <X1>50</X1>
-    <Y1>150</Y1>
-    <X2>150</X2>
-    <Y2>50</Y2>
-    <X3>250</X3>
-    <Y3>150</Y3>
+    <X1>300</X1>
+    <Y1>300</Y1>
+    <Width>200</Width>
+    <Height>200</Height>
   </MyFigure>
   <MyFigure xsi:type="MyTriangle">
     <Id>4</Id>
-    <Name>Triangle_4</Name>
+    <Name>Triangle_2</Name>
     <IsMoving>true</IsMoving>
     <X1>50</X1>
     <Y1>150</Y1>
@@ -46,47 +41,14 @@
   </MyFigure>
   <MyFigure xsi:type="MyCircle">
     <Id>5</Id>
-    <Name>Circle_1</Name>
-    <IsMoving>false</IsMoving>
-    <X1>100</X1>
-    <Y1>100</Y1>
-    <Radius>50</Radius>
-  </MyFigure>
-  <MyFigure xsi:type="MyCircle">
-    <Id>6</Id>
     <Name>Circle_2</Name>
     <IsMoving>true</IsMoving>
     <X1>100</X1>
     <Y1>100</Y1>
     <Radius>50</Radius>
   </MyFigure>
-  <MyFigure xsi:type="MyCircle">
-    <Id>7</Id>
-    <Name>Circle_3</Name>
-    <IsMoving>true</IsMoving>
-    <X1>100</X1>
-    <Y1>100</Y1>
-    <Radius>50</Radius>
-  </MyFigure>
-  <MyFigure xsi:type="MyCircle">
-    <Id>8</Id>
-    <Name>Circle_4</Name>
-    <IsMoving>false</IsMoving>
-    <X1>100</X1>
-    <Y1>100</Y1>
-    <Radius>50</Radius>
-  </MyFigure>
   <MyFigure xsi:type="MyRectangle">
-    <Id>9</Id>
-    <Name>Rectangle_1</Name>
-    <IsMoving>true</IsMoving>
-    <X1>300</X1>
-    <Y1>300</Y1>
-    <Width>200</Width>
-    <Height>200</Height>
-  </MyFigure>
-  <MyFigure xsi:type="MyRectangle">
-    <Id>10</Id>
+    <Id>6</Id>
     <Name>Rectangle_2</Name>
     <IsMoving>true</IsMoving>
     <X1>300</X1>
@@ -94,119 +56,28 @@
     <Width>200</Width>
     <Height>200</Height>
   </MyFigure>
+  <MyFigure xsi:type="MyTriangle">
+    <Id>7</Id>
+    <Name>Triangle_3</Name>
+    <IsMoving>true</IsMoving>
+    <X1>50</X1>
+    <Y1>150</Y1>
+    <X2>150</X2>
+    <Y2>50</Y2>
+    <X3>250</X3>
+    <Y3>150</Y3>
+  </MyFigure>
+  <MyFigure xsi:type="MyCircle">
+    <Id>8</Id>
+    <Name>Circle_3</Name>
+    <IsMoving>true</IsMoving>
+    <X1>100</X1>
+    <Y1>100</Y1>
+    <Radius>50</Radius>
+  </MyFigure>
   <MyFigure xsi:type="MyRectangle">
-    <Id>11</Id>
+    <Id>9</Id>
     <Name>Rectangle_3</Name>
-    <IsMoving>true</IsMoving>
-    <X1>300</X1>
-    <Y1>300</Y1>
-    <Width>200</Width>
-    <Height>200</Height>
-  </MyFigure>
-  <MyFigure xsi:type="MyRectangle">
-    <Id>12</Id>
-    <Name>Rectangle_4</Name>
-    <IsMoving>false</IsMoving>
-    <X1>300</X1>
-    <Y1>300</Y1>
-    <Width>200</Width>
-    <Height>200</Height>
-  </MyFigure>
-  <MyFigure xsi:type="MyRectangle">
-    <Id>13</Id>
-    <Name>Rectangle_5</Name>
-    <IsMoving>true</IsMoving>
-    <X1>300</X1>
-    <Y1>300</Y1>
-    <Width>200</Width>
-    <Height>200</Height>
-  </MyFigure>
-  <MyFigure xsi:type="MyTriangle">
-    <Id>14</Id>
-    <Name>Triangle_5</Name>
-    <IsMoving>false</IsMoving>
-    <X1>50</X1>
-    <Y1>150</Y1>
-    <X2>150</X2>
-    <Y2>50</Y2>
-    <X3>250</X3>
-    <Y3>150</Y3>
-  </MyFigure>
-  <MyFigure xsi:type="MyTriangle">
-    <Id>15</Id>
-    <Name>Triangle_6</Name>
-    <IsMoving>true</IsMoving>
-    <X1>50</X1>
-    <Y1>150</Y1>
-    <X2>150</X2>
-    <Y2>50</Y2>
-    <X3>250</X3>
-    <Y3>150</Y3>
-  </MyFigure>
-  <MyFigure xsi:type="MyTriangle">
-    <Id>16</Id>
-    <Name>Triangle_7</Name>
-    <IsMoving>true</IsMoving>
-    <X1>50</X1>
-    <Y1>150</Y1>
-    <X2>150</X2>
-    <Y2>50</Y2>
-    <X3>250</X3>
-    <Y3>150</Y3>
-  </MyFigure>
-  <MyFigure xsi:type="MyCircle">
-    <Id>17</Id>
-    <Name>Circle_5</Name>
-    <IsMoving>true</IsMoving>
-    <X1>100</X1>
-    <Y1>100</Y1>
-    <Radius>50</Radius>
-  </MyFigure>
-  <MyFigure xsi:type="MyCircle">
-    <Id>18</Id>
-    <Name>Circle_6</Name>
-    <IsMoving>true</IsMoving>
-    <X1>100</X1>
-    <Y1>100</Y1>
-    <Radius>50</Radius>
-  </MyFigure>
-  <MyFigure xsi:type="MyCircle">
-    <Id>19</Id>
-    <Name>Circle_7</Name>
-    <IsMoving>true</IsMoving>
-    <X1>100</X1>
-    <Y1>100</Y1>
-    <Radius>50</Radius>
-  </MyFigure>
-  <MyFigure xsi:type="MyCircle">
-    <Id>20</Id>
-    <Name>Circle_8</Name>
-    <IsMoving>true</IsMoving>
-    <X1>100</X1>
-    <Y1>100</Y1>
-    <Radius>50</Radius>
-  </MyFigure>
-  <MyFigure xsi:type="MyRectangle">
-    <Id>21</Id>
-    <Name>Rectangle_6</Name>
-    <IsMoving>true</IsMoving>
-    <X1>300</X1>
-    <Y1>300</Y1>
-    <Width>200</Width>
-    <Height>200</Height>
-  </MyFigure>
-  <MyFigure xsi:type="MyRectangle">
-    <Id>22</Id>
-    <Name>Rectangle_7</Name>
-    <IsMoving>true</IsMoving>
-    <X1>300</X1>
-    <Y1>300</Y1>
-    <Width>200</Width>
-    <Height>200</Height>
-  </MyFigure>
-  <MyFigure xsi:type="MyRectangle">
-    <Id>23</Id>
-    <Name>Rectangle_8</Name>
     <IsMoving>true</IsMoving>
     <X1>300</X1>
     <Y1>300</Y1>
