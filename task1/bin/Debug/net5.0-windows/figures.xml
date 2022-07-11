@@ -56,32 +56,4 @@
     <Width>200</Width>
     <Height>200</Height>
   </MyFigure>
-  <MyFigure xsi:type="MyTriangle">
-    <Id>7</Id>
-    <Name>Triangle_3</Name>
-    <IsMoving>true</IsMoving>
-    <X1>50</X1>
-    <Y1>150</Y1>
-    <X2>150</X2>
-    <Y2>50</Y2>
-    <X3>250</X3>
-    <Y3>150</Y3>
-  </MyFigure>
-  <MyFigure xsi:type="MyCircle">
-    <Id>8</Id>
-    <Name>Circle_3</Name>
-    <IsMoving>true</IsMoving>
-    <X1>100</X1>
-    <Y1>100</Y1>
-    <Radius>50</Radius>
-  </MyFigure>
-  <MyFigure xsi:type="MyRectangle">
-    <Id>9</Id>
-    <Name>Rectangle_3</Name>
-    <IsMoving>true</IsMoving>
-    <X1>300</X1>
-    <Y1>300</Y1>
-    <Width>200</Width>
-    <Height>200</Height>
-  </MyFigure>
 </ArrayOfMyFigure>

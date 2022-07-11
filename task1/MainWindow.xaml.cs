@@ -416,7 +416,6 @@
                 {
                     var serializer = new XmlSerializer(typeof(List<MyFigure>));
                     List<MyFigure> figures = serializer.Deserialize(fs) as List<MyFigure>;
-                    ;
                     if (figures.Count > 0)
                     {
                         countAll = countCirc = countRect = countTria = 0;
@@ -523,9 +522,9 @@
         {
             try
             {
-                using (StreamWriter sw = new StreamWriter("figures.json"))
+                if (figuresInProgram.Count > 0)
                 {
-                    if (figuresInProgram.Count > 0)
+                    using (StreamWriter sw = new StreamWriter("figures.json"))
                     {
                         var settings = new JsonSerializerSettings()
                         {
@@ -542,12 +541,12 @@
                         }
                         str += "]";
                         sw.Write(str);
-                        MessageBox.Show("Successfully saved!");
                     }
-                    else
-                    {
-                        throw new Exception();
-                    }
+                    MessageBox.Show("Successfully saved!");
+                }
+                else
+                {
+                    throw new Exception();
                 }
             }
             catch (Exception)
@@ -560,18 +559,18 @@
         {
             try
             {
-                var serializer = new XmlSerializer(typeof(List<MyFigure>));
-                using (TextWriter writer = new StreamWriter("figures.xml"))
+                if (figuresInProgram.Count > 0)
                 {
-                    if (figuresInProgram.Count > 0)
+                    var serializer = new XmlSerializer(typeof(List<MyFigure>));
+                    using (TextWriter writer = new StreamWriter("figures.xml"))
                     {
                         serializer.Serialize(writer, figuresInProgram);
                         MessageBox.Show("Successfully saved!");
                     }
-                    else
-                    {
-                        throw new Exception();
-                    }
+                }
+                else
+                {
+                    throw new Exception();
                 }
             }
             catch (Exception)
