@@ -10,9 +10,13 @@
     using System.Windows.Media;
     using System.Windows.Shapes;
     using System;
+    using System.Xml.Serialization;
 
     [Serializable]
-    public abstract class MyFigure
+    [XmlInclude(typeof(MyCircle))]
+    [XmlInclude(typeof(MyRectangle))]
+    [XmlInclude(typeof(MyTriangle))]
+    public class MyFigure
     {
         public int Id { get; set; }
 
@@ -20,7 +24,15 @@
 
         public bool IsMoving { get; set; }
         [NonSerialized]
+        [XmlIgnore]
         public Shape Shape;
+
+        public MyFigure()
+        {
+            Id = -1;
+            Name = "";
+            IsMoving = false;
+        }
 
         public virtual void Draw()
         {

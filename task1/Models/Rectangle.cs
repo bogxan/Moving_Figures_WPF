@@ -25,6 +25,14 @@
             this.Y1 = y;
         }
 
+        public MyRectangle()
+        {
+            this.Width = 0;
+            this.Height = 0;
+            this.X1 = 0;
+            this.Y1 = 0;
+        }
+
         public int X1 { get; set; }
 
         public int Y1 { get; set; }

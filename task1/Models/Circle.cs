@@ -24,6 +24,12 @@
             this.Y1 = y;
         }
 
+        public MyCircle()
+        {
+            this.Radius = -1;
+            this.X1 = this.Y1 = 0;
+        }
+
         public int X1 { get; set; }
 
         public int Y1 { get; set; }

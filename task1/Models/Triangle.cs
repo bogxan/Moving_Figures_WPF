@@ -27,6 +27,16 @@
             this.Y3 = y3;
         }
 
+        public MyTriangle()
+        {
+            this.X1 = 0;
+            this.Y1 = 0;
+            this.X2 = 0;
+            this.Y2 = 0;
+            this.X3 = 0;
+            this.Y3 = 0;
+        }
+
         public int X1 { get; set; }
 
         public int Y1 { get; set; }
