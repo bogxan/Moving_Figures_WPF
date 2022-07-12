@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task1"
         mc:Ignorable="d"
-        Title="{DynamicResource m_Title}" Background="Bisque" IsVisibleChanged="Window_IsVisibleChanged" Name="main_window" Height="Auto"  Width="Auto" SizeToContent="WidthAndHeight">
+        Title="{DynamicResource m_Title}" Background="Bisque" IsVisibleChanged="Window_IsVisibleChanged" Name="main_window" WindowState="Maximized" WindowStyle="None">
     <Grid x:Name="main_grid" MinHeight="800" MinWidth="1000">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
@@ -17,8 +17,9 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="0">
-            <Menu Height="30px" Margin="10px" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Yellow">
-                <MenuItem BorderBrush="Black" BorderThickness="1px" Height="30px" x:Name="itemFile" Header="{DynamicResource m_btnFile}">
+            <Button x:Name="btnExit" BorderBrush="Black" BorderThickness="1px" Height="30px" Margin="10px" VerticalAlignment="Center" HorizontalAlignment="Center" Background="LightCyan"  Click="btnExit_Click"  Content="{DynamicResource m_btnExit}"></Button>
+            <Menu BorderBrush="Black" BorderThickness="1px" Height="30px" Margin="10px" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Yellow">
+                <MenuItem Height="30px" x:Name="itemFile" Header="{DynamicResource m_btnFile}">
                     <MenuItem Height="30px" x:Name="itemSave" Header="{DynamicResource m_btnSave}">
                         <MenuItem Height="30px" x:Name="btnSaveBin" Click="btnSaveBin_Click" Header="{DynamicResource m_btnSaveBin}" />
                         <MenuItem Height="30px" x:Name="btnSaveJSON" Click="btnSaveJSON_Click" Header="{DynamicResource m_btnSaveJSON}" />

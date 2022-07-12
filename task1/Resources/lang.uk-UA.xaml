@@ -23,5 +23,9 @@
     <v:String x:Key="m_treeViewItemCircle">Коло:</v:String>
     <v:String x:Key="m_treeViewItemRectangle">Прямокутник:</v:String>
     <v:String x:Key="m_treeViewItemTriangle">Трикутник:</v:String>
+    <v:String x:Key="m_msgBoxLoad">Успішно завантажено!</v:String>
+    <v:String x:Key="m_msgBoxSave">Успішно збережено!</v:String>
+    <v:String x:Key="m_msgBoxError">Помилка!</v:String>
+    <v:String x:Key="m_btnExit">Вийти</v:String>
     <v:String x:Key="m_menu_Language">Українська</v:String>
 </ResourceDictionary>

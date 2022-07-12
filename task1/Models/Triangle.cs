@@ -64,10 +64,10 @@
         public override void Move(Point sizeOfCanvas)
         {
             Random rnd = new Random();
-            X1 = rnd.Next(Convert.ToInt32(sizeOfCanvas.X - Shape.ActualWidth));
-            Y1 = rnd.Next(Convert.ToInt32(sizeOfCanvas.Y - Shape.ActualHeight));
-            DoubleAnimation animLeft = new(Canvas.GetLeft(Shape), X1, new Duration(TimeSpan.FromSeconds(0.5)));
-            DoubleAnimation animTop = new(Canvas.GetTop(Shape), Y1, new Duration(TimeSpan.FromSeconds(0.5)));
+            double newLeft = rnd.Next(Convert.ToInt32(sizeOfCanvas.X - Shape.ActualWidth));
+            double newTop = rnd.Next(Convert.ToInt32(sizeOfCanvas.Y - Shape.ActualHeight));
+            DoubleAnimation animLeft = new(Canvas.GetLeft(Shape), newLeft, new Duration(TimeSpan.FromSeconds(0.5)));
+            DoubleAnimation animTop = new(Canvas.GetTop(Shape), newTop, new Duration(TimeSpan.FromSeconds(0.5)));
             animLeft.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut };
             animTop.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut };
             Shape.BeginAnimation(Canvas.LeftProperty, animLeft, HandoffBehavior.SnapshotAndReplace);

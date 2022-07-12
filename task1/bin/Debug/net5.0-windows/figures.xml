@@ -15,21 +15,29 @@
     <Id>2</Id>
     <Name>Circle_1</Name>
     <IsMoving>true</IsMoving>
-    <X1>100</X1>
-    <Y1>100</Y1>
+    <X1>1071</X1>
+    <Y1>438</Y1>
     <Radius>50</Radius>
   </MyFigure>
   <MyFigure xsi:type="MyRectangle">
     <Id>3</Id>
     <Name>Rectangle_1</Name>
     <IsMoving>true</IsMoving>
-    <X1>300</X1>
-    <Y1>300</Y1>
+    <X1>1046</X1>
+    <Y1>458</Y1>
     <Width>200</Width>
     <Height>200</Height>
   </MyFigure>
-  <MyFigure xsi:type="MyTriangle">
+  <MyFigure xsi:type="MyCircle">
     <Id>4</Id>
+    <Name>Circle_2</Name>
+    <IsMoving>true</IsMoving>
+    <X1>302</X1>
+    <Y1>483</Y1>
+    <Radius>50</Radius>
+  </MyFigure>
+  <MyFigure xsi:type="MyTriangle">
+    <Id>5</Id>
     <Name>Triangle_2</Name>
     <IsMoving>true</IsMoving>
     <X1>50</X1>
@@ -40,19 +48,55 @@
     <Y3>150</Y3>
   </MyFigure>
   <MyFigure xsi:type="MyCircle">
-    <Id>5</Id>
-    <Name>Circle_2</Name>
+    <Id>6</Id>
+    <Name>Circle_3</Name>
     <IsMoving>true</IsMoving>
-    <X1>100</X1>
-    <Y1>100</Y1>
+    <X1>749</X1>
+    <Y1>78</Y1>
     <Radius>50</Radius>
   </MyFigure>
   <MyFigure xsi:type="MyRectangle">
-    <Id>6</Id>
+    <Id>7</Id>
     <Name>Rectangle_2</Name>
     <IsMoving>true</IsMoving>
-    <X1>300</X1>
-    <Y1>300</Y1>
+    <X1>472</X1>
+    <Y1>171</Y1>
+    <Width>200</Width>
+    <Height>200</Height>
+  </MyFigure>
+  <MyFigure xsi:type="MyCircle">
+    <Id>8</Id>
+    <Name>Circle_4</Name>
+    <IsMoving>true</IsMoving>
+    <X1>74</X1>
+    <Y1>502</Y1>
+    <Radius>50</Radius>
+  </MyFigure>
+  <MyFigure xsi:type="MyTriangle">
+    <Id>9</Id>
+    <Name>Triangle_3</Name>
+    <IsMoving>true</IsMoving>
+    <X1>50</X1>
+    <Y1>150</Y1>
+    <X2>150</X2>
+    <Y2>50</Y2>
+    <X3>250</X3>
+    <Y3>150</Y3>
+  </MyFigure>
+  <MyFigure xsi:type="MyCircle">
+    <Id>10</Id>
+    <Name>Circle_5</Name>
+    <IsMoving>true</IsMoving>
+    <X1>692</X1>
+    <Y1>82</Y1>
+    <Radius>50</Radius>
+  </MyFigure>
+  <MyFigure xsi:type="MyRectangle">
+    <Id>11</Id>
+    <Name>Rectangle_3</Name>
+    <IsMoving>true</IsMoving>
+    <X1>339</X1>
+    <Y1>3</Y1>
     <Width>200</Width>
     <Height>200</Height>
   </MyFigure>
