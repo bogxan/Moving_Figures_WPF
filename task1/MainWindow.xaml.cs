@@ -114,14 +114,6 @@
                     if (item.IsMoving)
                     {
                         item.Move(this.sizeOfCanvas);
-                        //double newLeft = this.rnd.Next(Convert.ToInt32(this.sizeOfCanvas.X - item.Shape.ActualWidth));
-                        //double newTop = this.rnd.Next(Convert.ToInt32(this.sizeOfCanvas.Y - item.Shape.ActualHeight));
-                        //DoubleAnimation animLeft = new(Canvas.GetLeft(item.Shape), newLeft, new Duration(TimeSpan.FromSeconds(0.5)));
-                        //DoubleAnimation animTop = new(Canvas.GetTop(item.Shape), newTop, new Duration(TimeSpan.FromSeconds(0.5)));
-                        //animLeft.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut };
-                        //animTop.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut };
-                        //item.Shape.BeginAnimation(Canvas.LeftProperty, animLeft, HandoffBehavior.SnapshotAndReplace);
-                        //item.Shape.BeginAnimation(Canvas.TopProperty, animTop, HandoffBehavior.SnapshotAndReplace);
                     }
                 }
 
