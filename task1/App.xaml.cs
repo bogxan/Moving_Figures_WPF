@@ -19,12 +19,12 @@
             languages.Add(new CultureInfo("en-US"));
             languages.Add(new CultureInfo("ru-RU"));
             languages.Add(new CultureInfo("uk-UA"));
-            Language = task1.Properties.Settings1.Default.DefaultLanguage;
+            Language = Task1.Properties.Settings1.Default.DefaultLanguage;
         }
 
         public static event EventHandler LanguageChanged;
 
-        private static List<CultureInfo> languages = new List<CultureInfo>();
+        private static readonly List<CultureInfo> languages = new();
 
         public static List<CultureInfo> Languages
         {
@@ -54,7 +54,7 @@
                 }
 
                 System.Threading.Thread.CurrentThread.CurrentUICulture = value;
-                ResourceDictionary dict = new ResourceDictionary();
+                ResourceDictionary dict = new();
                 try
                 {
                     if (value.Name == "en-US")
@@ -92,8 +92,8 @@
 
         private void App_LanguageChanged(object sender, EventArgs e)
         {
-            task1.Properties.Settings1.Default.DefaultLanguage = Language;
-            task1.Properties.Settings1.Default.Save();
+            Task1.Properties.Settings1.Default.DefaultLanguage = Language;
+            Task1.Properties.Settings1.Default.Save();
         }
     }
 }

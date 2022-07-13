@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task1"
         mc:Ignorable="d"
-        Title="{DynamicResource m_Title}" Background="Bisque" IsVisibleChanged="Window_IsVisibleChanged" Name="main_window" WindowState="Maximized" WindowStyle="None">
-    <Grid x:Name="main_grid" MinHeight="800" MinWidth="1000">
+        Title="{DynamicResource m_Title}" Height="800" Width="1000" Background="Bisque" IsVisibleChanged="Window_IsVisibleChanged" Name="main_window">
+    <Grid x:Name="main_grid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -17,18 +17,18 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="0">
-            <Button x:Name="btnExit" BorderBrush="Black" BorderThickness="1px" Height="30px" Margin="10px" VerticalAlignment="Center" HorizontalAlignment="Center" Background="LightCyan"  Click="btnExit_Click"  Content="{DynamicResource m_btnExit}"></Button>
+            <Button x:Name="btnExit" BorderBrush="Black" BorderThickness="1px" Height="30px" Margin="10px" VerticalAlignment="Center" HorizontalAlignment="Center" Background="LightCyan"  Click="BtnExit_Click"  Content="{DynamicResource m_btnExit}"></Button>
             <Menu BorderBrush="Black" BorderThickness="1px" Height="30px" Margin="10px" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Yellow">
                 <MenuItem Height="30px" x:Name="itemFile" Header="{DynamicResource m_btnFile}">
                     <MenuItem Height="30px" x:Name="itemSave" Header="{DynamicResource m_btnSave}">
-                        <MenuItem Height="30px" x:Name="btnSaveBin" Click="btnSaveBin_Click" Header="{DynamicResource m_btnSaveBin}" />
-                        <MenuItem Height="30px" x:Name="btnSaveJSON" Click="btnSaveJSON_Click" Header="{DynamicResource m_btnSaveJSON}" />
-                        <MenuItem Height="30px" x:Name="btnSaveXML" Click="btnSaveXML_Click" Header="{DynamicResource m_btnSaveXML}" />
+                        <MenuItem Height="30px" x:Name="btnSaveBin" Click="BtnSaveBin_Click" Header="{DynamicResource m_btnSaveBin}" />
+                        <MenuItem Height="30px" x:Name="btnSaveJSON" Click="BtnSaveJSON_Click" Header="{DynamicResource m_btnSaveJSON}" />
+                        <MenuItem Height="30px" x:Name="btnSaveXML" Click="BtnSaveXML_Click" Header="{DynamicResource m_btnSaveXML}" />
                     </MenuItem>
                     <MenuItem Height="30px" x:Name="itemLoad" Header="{DynamicResource m_btnLoad}">
-                        <MenuItem Height="30px" x:Name="btnLoadBin" Click="btnLoadBin_Click" Header="{DynamicResource m_btnLoadBin}" />
-                        <MenuItem Height="30px" x:Name="btnLoadJSON" Click="btnLoadJSON_Click" Header="{DynamicResource m_btnLoadJSON}" />
-                        <MenuItem Height="30px" x:Name="btnLoadXML" Click="btnLoadXML_Click" Header="{DynamicResource m_btnLoadXml}" />
+                        <MenuItem Height="30px" x:Name="btnLoadBin" Click="BtnLoadBin_Click" Header="{DynamicResource m_btnLoadBin}" />
+                        <MenuItem Height="30px" x:Name="btnLoadJSON" Click="BtnLoadJSON_Click" Header="{DynamicResource m_btnLoadJSON}" />
+                        <MenuItem Height="30px" x:Name="btnLoadXML" Click="BtnLoadXML_Click" Header="{DynamicResource m_btnLoadXml}" />
                     </MenuItem>
                 </MenuItem>
             </Menu>

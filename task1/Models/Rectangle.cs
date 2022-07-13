@@ -13,56 +13,58 @@
     using System.Windows.Media;
     using System.Windows.Media.Animation;
     using System.Windows.Shapes;
+    using System.Xml.Serialization;
+    using Task1.Exceptions;
 
     [Serializable]
     public class MyRectangle : MyFigure
     {
-        public MyRectangle(int width, int height, int x, int y)
+        public MyRectangle(int width, int height, int x, int y) : base(width, height, x, y)
         {
-            this.Width = width;
-            this.Height = height;
-            this.X1 = x;
-            this.Y1 = y;
+            this.BaseRectangle = new();
         }
 
-        public MyRectangle()
+        public MyRectangle() : base()
         {
-            this.Width = 0;
-            this.Height = 0;
-            this.X1 = 0;
-            this.Y1 = 0;
+            this.BaseRectangle = new();
         }
 
-        public int X1 { get; set; }
-
-        public int Y1 { get; set; }
-
-        public int Width { get; set; }
-
-        public int Height { get; set; }
+        [NonSerialized]
+        [XmlIgnore]
+        public Rectangle BaseRectangle;
 
         public override void Draw()
         {
-            Rectangle rectangle = new();
-            rectangle.Width = this.Width;
-            rectangle.Height = this.Height;
-            rectangle.Stroke = new SolidColorBrush(Colors.Black);
-            rectangle.StrokeThickness = 1;
-            rectangle.Fill = new SolidColorBrush(Colors.Green);
-            this.Shape = rectangle;
+            this.BaseRectangle = new();
+            this.BaseRectangle.Width = this.Width;
+            this.BaseRectangle.Height = this.Height;
+            this.BaseRectangle.Stroke = new SolidColorBrush(Colors.Black);
+            this.BaseRectangle.StrokeThickness = 1;
+            this.BaseRectangle.Fill = new SolidColorBrush(Colors.Green);
         }
 
         public override void Move(Point sizeOfCanvas)
         {
-            Random rnd = new Random();
-            X1 = rnd.Next(Convert.ToInt32(sizeOfCanvas.X - Shape.ActualWidth));
-            Y1 = rnd.Next(Convert.ToInt32(sizeOfCanvas.Y - Shape.ActualHeight));
-            DoubleAnimation animLeft = new(Canvas.GetLeft(Shape), X1, new Duration(TimeSpan.FromSeconds(0.5)));
-            DoubleAnimation animTop = new(Canvas.GetTop(Shape), Y1, new Duration(TimeSpan.FromSeconds(0.5)));
-            animLeft.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut };
-            animTop.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut };
-            Shape.BeginAnimation(Canvas.LeftProperty, animLeft, HandoffBehavior.SnapshotAndReplace);
-            Shape.BeginAnimation(Canvas.TopProperty, animTop, HandoffBehavior.SnapshotAndReplace);
+            Random rnd = new();
+            try
+            {
+                this.X = rnd.Next(Convert.ToInt32(sizeOfCanvas.X - this.BaseRectangle.ActualWidth));
+                this.Y = rnd.Next(Convert.ToInt32(sizeOfCanvas.Y - this.BaseRectangle.ActualHeight));
+                if (this.X >= sizeOfCanvas.X || this.Y >= sizeOfCanvas.Y)
+                {
+                    throw new FigureException("Figure is out of canvas!");
+                }
+            }
+            catch (FigureException)
+            {
+                this.X = 300;
+                this.Y = 300;
+            }
+            finally
+            {
+                Canvas.SetLeft(this.BaseRectangle, this.X);
+                Canvas.SetTop(this.BaseRectangle, this.Y);
+            }
         }
     }
 }

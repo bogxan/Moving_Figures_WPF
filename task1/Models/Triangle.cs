@@ -13,65 +13,61 @@
     using System.Windows.Media;
     using System.Windows.Media.Animation;
     using System.Windows.Shapes;
+    using System.Xml.Serialization;
+    using Task1.Exceptions;
 
     [Serializable]
     public class MyTriangle : MyFigure
     {
-        public MyTriangle(int x1, int y1, int x2, int y2, int x3, int y3)
+        public MyTriangle(int width, int height, int x, int y) : base(width, height, x, y)
         {
-            this.X1 = x1;
-            this.Y1 = y1;
-            this.X2 = x2;
-            this.Y2 = y2;
-            this.X3 = x3;
-            this.Y3 = y3;
+            this.BaseTriangle = new();
         }
 
-        public MyTriangle()
+        public MyTriangle() : base()
         {
-            this.X1 = 0;
-            this.Y1 = 0;
-            this.X2 = 0;
-            this.Y2 = 0;
-            this.X3 = 0;
-            this.Y3 = 0;
+            this.BaseTriangle = new();
         }
 
-        public int X1 { get; set; }
-
-        public int Y1 { get; set; }
-
-        public int X2 { get; set; }
-
-        public int Y2 { get; set; }
-
-        public int X3 { get; set; }
-
-        public int Y3 { get; set; }
+        [NonSerialized]
+        [XmlIgnore]
+        public Polygon BaseTriangle;
 
         public override void Draw()
         {
-            Polygon triangle = new();
-            triangle.Points.Add(new System.Windows.Point { X = this.X1, Y = this.Y1 });
-            triangle.Points.Add(new System.Windows.Point { X = this.X2, Y = this.Y2 });
-            triangle.Points.Add(new System.Windows.Point { X = this.X3, Y = this.Y3 });
-            triangle.Stroke = new SolidColorBrush(Colors.Black);
-            triangle.StrokeThickness = 1;
-            triangle.Fill = new SolidColorBrush(Colors.Blue);
-            this.Shape = triangle;
+            this.BaseTriangle = new();
+            this.BaseTriangle.Points.Add(new System.Windows.Point { X = 50, Y = 150 });
+            this.BaseTriangle.Points.Add(new System.Windows.Point { X = 150, Y = 50 });
+            this.BaseTriangle.Points.Add(new System.Windows.Point { X = 250, Y = 150 });
+            this.BaseTriangle.Width = this.Width;
+            this.BaseTriangle.Height = this.Height;
+            this.BaseTriangle.Stroke = new SolidColorBrush(Colors.Black);
+            this.BaseTriangle.StrokeThickness = 1;
+            this.BaseTriangle.Fill = new SolidColorBrush(Colors.Blue);
         }
 
         public override void Move(Point sizeOfCanvas)
         {
-            Random rnd = new Random();
-            double newLeft = rnd.Next(Convert.ToInt32(sizeOfCanvas.X - Shape.ActualWidth));
-            double newTop = rnd.Next(Convert.ToInt32(sizeOfCanvas.Y - Shape.ActualHeight));
-            DoubleAnimation animLeft = new(Canvas.GetLeft(Shape), newLeft, new Duration(TimeSpan.FromSeconds(0.5)));
-            DoubleAnimation animTop = new(Canvas.GetTop(Shape), newTop, new Duration(TimeSpan.FromSeconds(0.5)));
-            animLeft.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut };
-            animTop.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut };
-            Shape.BeginAnimation(Canvas.LeftProperty, animLeft, HandoffBehavior.SnapshotAndReplace);
-            Shape.BeginAnimation(Canvas.TopProperty, animTop, HandoffBehavior.SnapshotAndReplace);
+            Random rnd = new();
+            try
+            {
+                this.X = rnd.Next(Convert.ToInt32(sizeOfCanvas.X - this.BaseTriangle.ActualWidth));
+                this.Y = rnd.Next(Convert.ToInt32(sizeOfCanvas.Y - this.BaseTriangle.ActualHeight));
+                if (this.X >= sizeOfCanvas.X || this.Y >= sizeOfCanvas.Y)
+                {
+                    throw new FigureException("Figure is out of canvas!");
+                }
+            }
+            catch (FigureException)
+            {
+                this.X = 100;
+                this.Y = 100;
+            }
+            finally
+            {
+                Canvas.SetLeft(this.BaseTriangle, this.X);
+                Canvas.SetTop(this.BaseTriangle, this.Y);
+            }
         }
     }
 }
