@@ -140,6 +140,11 @@
                         {
                             triangle.Move(sizeOfCanvas);
                         }
+                        else
+                        {
+                            Canvas.SetLeft(triangle.BaseTriangle, triangle.X);
+                            Canvas.SetTop(triangle.BaseTriangle, triangle.Y);
+                        }
                         TreeViewItem addNode = new();
                         string[] prts = triangle.Name.Split("_");
                         countTria = int.Parse(prts[1]);
@@ -160,6 +165,11 @@
                         {
                             circle.Move(sizeOfCanvas);
                         }
+                        else
+                        {
+                            Canvas.SetLeft(circle.BaseCircle, circle.X);
+                            Canvas.SetTop(circle.BaseCircle, circle.Y);
+                        }
                         TreeViewItem addNode = new();
                         string[] prts = circle.Name.Split("_");
                         countCirc = int.Parse(prts[1]);
@@ -179,6 +189,11 @@
                         if (rectangle.X + rectangle.BaseRectangle.ActualWidth >= sizeOfCanvas.X || rectangle.Y + rectangle.BaseRectangle.ActualHeight >= sizeOfCanvas.Y)
                         {
                             rectangle.Move(sizeOfCanvas);
+                        }
+                        else
+                        {
+                            Canvas.SetLeft(rectangle.BaseRectangle, rectangle.X);
+                            Canvas.SetTop(rectangle.BaseRectangle, rectangle.Y);
                         }
                         Canvas.SetLeft(rectangle.BaseRectangle, rectangle.X);
                         Canvas.SetTop(rectangle.BaseRectangle, rectangle.Y);
