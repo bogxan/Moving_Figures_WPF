@@ -26,7 +26,7 @@
 
     public partial class MainWindow : Window
     {
-        private readonly List<MyFigure> figuresInProgram = new();
+        private readonly List<MyFigure<int>> figuresInProgram = new();
         private Point sizeOfCanvas = new();
         private int countTria = 0, countRect = 0, countCirc = 0, countAll = 0;
         private TreeViewItem selectedNode = new();
@@ -120,7 +120,7 @@
             }
         }
 
-        private void AddLoadedFiguresToProgram(List<MyFigure> figures)
+        private void AddLoadedFiguresToProgram(List<MyFigure<int>> figures)
         {
             if (figures.Count > 0)
             {
@@ -134,7 +134,7 @@
                 {
                     if (figures[i].Name.Contains("Triangle"))
                     {
-                        MyTriangle triangle = figures[i] as MyTriangle;
+                        MyTriangle<int> triangle = figures[i] as MyTriangle<int>;
                         triangle.Draw();
                         if (triangle.X + triangle.BaseTriangle.ActualWidth >= sizeOfCanvas.X || triangle.Y + triangle.BaseTriangle.ActualHeight >= sizeOfCanvas.Y)
                         {
@@ -159,7 +159,7 @@
                     }
                     else if (figures[i].Name.Contains("Circle"))
                     {
-                        MyCircle circle = figures[i] as MyCircle;
+                        MyCircle<int> circle = figures[i] as MyCircle<int>;
                         circle.Draw();
                         if (circle.X + circle.BaseCircle.ActualWidth >= sizeOfCanvas.X || circle.Y + circle.BaseCircle.ActualHeight >= sizeOfCanvas.Y)
                         {
@@ -184,7 +184,7 @@
                     }
                     else
                     {
-                        MyRectangle rectangle = figures[i] as MyRectangle;
+                        MyRectangle<int> rectangle = figures[i] as MyRectangle<int>;
                         rectangle.Draw();
                         if (rectangle.X + rectangle.BaseRectangle.ActualWidth >= sizeOfCanvas.X || rectangle.Y + rectangle.BaseRectangle.ActualHeight >= sizeOfCanvas.Y)
                         {
@@ -226,7 +226,7 @@
             addNode.Header = FindResource("m_treeViewItemTria").ToString() + $" {this.countTria}";
             addNode.Name = $"Triangle_{this.countTria}";
             treeViewItemTriangle.Items.Add(addNode);
-            MyTriangle triangle = new(150, 150, 200, 200);
+            MyTriangle<int> triangle = new(150, 150, 200, 200);
             triangle.Id = countAll;
             triangle.Name = $"Triangle_{this.countTria}";
             triangle.IsMoving = true;
@@ -246,7 +246,7 @@
             addNode.Header = FindResource("m_treeViewItemCirc").ToString() + $" {this.countCirc}";
             addNode.Name = $"Circle_{this.countCirc}";
             treeViewItemCircle.Items.Add(addNode);
-            MyCircle circle = new(100, 100, 300, 300);
+            MyCircle<int> circle = new(100, 100, 300, 300);
             circle.Id = countAll;
             circle.Name = $"Circle_{this.countCirc}";
             circle.IsMoving = true;
@@ -266,7 +266,7 @@
             addNode.Header = FindResource("m_treeViewItemRect").ToString() + $" {this.countRect}";
             addNode.Name = $"Rectangle_{this.countRect}";
             treeViewItemRectangle.Items.Add(addNode);
-            MyRectangle rectangle = new(300, 200, 400, 400);
+            MyRectangle<int> rectangle = new(300, 200, 400, 400);
             rectangle.Id = countAll;
             rectangle.Name = $"Rectangle_{this.countRect}";
             rectangle.IsMoving = true;
@@ -323,7 +323,7 @@
                 BinaryFormatter formatter = new();
                 FileStream fs = File.Open("figures.dat", FileMode.Open);
                 object obj = formatter.Deserialize(fs);
-                List<MyFigure> figures = (List<MyFigure>)obj;
+                List<MyFigure<int>> figures = (List<MyFigure<int>>)obj;
                 fs.Flush();
                 fs.Close();
                 fs.Dispose();
@@ -350,7 +350,7 @@
                     {
                         TypeNameHandling = TypeNameHandling.Objects
                     };
-                    List<MyFigure> figures = JsonConvert.DeserializeObject<List<MyFigure>>(fileContent, settings);
+                    List<MyFigure<int>> figures = JsonConvert.DeserializeObject<List<MyFigure<int>>>(fileContent, settings);
                     AddLoadedFiguresToProgram(figures);
                 }
             }
@@ -365,8 +365,8 @@
             try
             {
                 using FileStream fs = new("figures.xml", FileMode.OpenOrCreate);
-                var serializer = new XmlSerializer(typeof(List<MyFigure>));
-                List<MyFigure> figures = serializer.Deserialize(fs) as List<MyFigure>;
+                var serializer = new XmlSerializer(typeof(List<MyFigure<int>>));
+                List<MyFigure<int>> figures = serializer.Deserialize(fs) as List<MyFigure<int>>;
                 AddLoadedFiguresToProgram(figures);
             }
             catch (Exception)
@@ -443,7 +443,7 @@
             {
                 if (figuresInProgram.Count > 0)
                 {
-                    var serializer = new XmlSerializer(typeof(List<MyFigure>));
+                    var serializer = new XmlSerializer(typeof(List<MyFigure<int>>));
                     using TextWriter writer = new StreamWriter("figures.xml");
                     serializer.Serialize(writer, figuresInProgram);
                     MessageBox.Show(FindResource("m_msgBoxSave").ToString());
@@ -472,19 +472,19 @@
                 {
                     if (figuresInProgram[i].Name.Contains("Triangle"))
                     {
-                        MyTriangle triangle = figuresInProgram[i] as MyTriangle;
+                        MyTriangle<int> triangle = figuresInProgram[i] as MyTriangle<int>;
                         triangle.BaseTriangle.Stroke = new SolidColorBrush(Colors.Black);
                         triangle.BaseTriangle.StrokeThickness = 1;
                     }
                     else if (figuresInProgram[i].Name.Contains("Circle"))
                     {
-                        MyCircle circle = figuresInProgram[i] as MyCircle;
+                        MyCircle<int> circle = figuresInProgram[i] as MyCircle<int>;
                         circle.BaseCircle.Stroke = new SolidColorBrush(Colors.Black);
                         circle.BaseCircle.StrokeThickness = 1;
                     }
                     else
                     {
-                        MyRectangle rectangle = figuresInProgram[i] as MyRectangle;
+                        MyRectangle<int> rectangle = figuresInProgram[i] as MyRectangle<int>;
                         rectangle.BaseRectangle.Stroke = new SolidColorBrush(Colors.Black);
                         rectangle.BaseRectangle.StrokeThickness = 1;
                     }
@@ -498,19 +498,19 @@
                         {
                             if (figuresInProgram[i].Name.Contains("Triangle"))
                             {
-                                MyTriangle triangle = figuresInProgram[i] as MyTriangle;
+                                MyTriangle<int> triangle = figuresInProgram[i] as MyTriangle<int>;
                                 triangle.BaseTriangle.Stroke = new SolidColorBrush(Colors.Yellow);
                                 triangle.BaseTriangle.StrokeThickness = 5;
                             }
                             else if (figuresInProgram[i].Name.Contains("Circle"))
                             {
-                                MyCircle circle = figuresInProgram[i] as MyCircle;
+                                MyCircle<int> circle = figuresInProgram[i] as MyCircle<int>;
                                 circle.BaseCircle.Stroke = new SolidColorBrush(Colors.Yellow);
                                 circle.BaseCircle.StrokeThickness = 5;
                             }
                             else
                             {
-                                MyRectangle rectangle = figuresInProgram[i] as MyRectangle;
+                                MyRectangle<int> rectangle = figuresInProgram[i] as MyRectangle<int>;
                                 rectangle.BaseRectangle.Stroke = new SolidColorBrush(Colors.Yellow);
                                 rectangle.BaseRectangle.StrokeThickness = 5;
                             }

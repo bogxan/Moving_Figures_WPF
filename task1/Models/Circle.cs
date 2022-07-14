@@ -17,7 +17,7 @@
     using Task1.Exceptions;
 
     [Serializable]
-    public class MyCircle : MyFigure
+    public class MyCircle<T> : MyFigure<T>
     {
         public MyCircle(int width, int height, int x, int y) : base(width, height, x, y)
         {

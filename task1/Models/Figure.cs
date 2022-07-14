@@ -14,17 +14,17 @@
     using JsonSubTypes;
 
     [Serializable]
-    [XmlInclude(typeof(MyCircle))]
-    [XmlInclude(typeof(MyRectangle))]
-    [XmlInclude(typeof(MyTriangle))]
-    [JsonSubtypes.KnownSubType(typeof(MyCircle), "Circle")]
-    [JsonSubtypes.KnownSubType(typeof(MyRectangle), "Rectangle")]
-    [JsonSubtypes.KnownSubType(typeof(MyTriangle), "Triangle")]
-    public abstract class MyFigure
+    [XmlInclude(typeof(MyCircle<int>))]
+    [XmlInclude(typeof(MyRectangle<int>))]
+    [XmlInclude(typeof(MyTriangle<int>))]
+    [JsonSubtypes.KnownSubType(typeof(MyCircle<int>), "Circle")]
+    [JsonSubtypes.KnownSubType(typeof(MyRectangle<int>), "Rectangle")]
+    [JsonSubtypes.KnownSubType(typeof(MyTriangle<int>), "Triangle")]
+    public abstract class MyFigure<T>
     {
         public MyFigure()
         {
-            this.Id = -1;
+            this.Id = default;
             this.Name = string.Empty;
             this.IsMoving = false;
             this.Width = 0;
@@ -41,7 +41,7 @@
             this.Y = y;
         }
 
-        public int Id { get; set; }
+        public T Id { get; set; }
 
         public string Name { get; set; }
 

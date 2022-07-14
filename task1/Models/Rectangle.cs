@@ -17,7 +17,7 @@
     using Task1.Exceptions;
 
     [Serializable]
-    public class MyRectangle : MyFigure
+    public class MyRectangle<T> : MyFigure<T>
     {
         public MyRectangle(int width, int height, int x, int y) : base(width, height, x, y)
         {
