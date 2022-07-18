@@ -136,7 +136,7 @@
                     {
                         MyTriangle<int> triangle = figures[i] as MyTriangle<int>;
                         triangle.Draw();
-                        if (triangle.X + triangle.BaseTriangle.ActualWidth >= sizeOfCanvas.X || triangle.Y + triangle.BaseTriangle.ActualHeight >= sizeOfCanvas.Y)
+                        if (triangle.X + triangle.BaseTriangle.Width >= sizeOfCanvas.X || triangle.Y + triangle.BaseTriangle.Height >= sizeOfCanvas.Y)
                         {
                             triangle.Move(sizeOfCanvas);
                         }
@@ -161,7 +161,7 @@
                     {
                         MyCircle<int> circle = figures[i] as MyCircle<int>;
                         circle.Draw();
-                        if (circle.X + circle.BaseCircle.ActualWidth >= sizeOfCanvas.X || circle.Y + circle.BaseCircle.ActualHeight >= sizeOfCanvas.Y)
+                        if (circle.X + circle.BaseCircle.Width >= sizeOfCanvas.X || circle.Y + circle.BaseCircle.Height >= sizeOfCanvas.Y)
                         {
                             circle.Move(sizeOfCanvas);
                         }
@@ -186,7 +186,7 @@
                     {
                         MyRectangle<int> rectangle = figures[i] as MyRectangle<int>;
                         rectangle.Draw();
-                        if (rectangle.X + rectangle.BaseRectangle.ActualWidth >= sizeOfCanvas.X || rectangle.Y + rectangle.BaseRectangle.ActualHeight >= sizeOfCanvas.Y)
+                        if (rectangle.X + rectangle.BaseRectangle.Width >= sizeOfCanvas.X || rectangle.Y + rectangle.BaseRectangle.Height >= sizeOfCanvas.Y)
                         {
                             rectangle.Move(sizeOfCanvas);
                         }
@@ -195,8 +195,6 @@
                             Canvas.SetLeft(rectangle.BaseRectangle, rectangle.X);
                             Canvas.SetTop(rectangle.BaseRectangle, rectangle.Y);
                         }
-                        Canvas.SetLeft(rectangle.BaseRectangle, rectangle.X);
-                        Canvas.SetTop(rectangle.BaseRectangle, rectangle.Y);
                         TreeViewItem addNode = new();
                         string[] prts = rectangle.Name.Split("_");
                         countRect = int.Parse(prts[1]);

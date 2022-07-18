@@ -48,8 +48,8 @@
             Random rnd = new();
             try
             {
-                this.X = rnd.Next(Convert.ToInt32(sizeOfCanvas.X - this.BaseRectangle.ActualWidth));
-                this.Y = rnd.Next(Convert.ToInt32(sizeOfCanvas.Y - this.BaseRectangle.ActualHeight));
+                this.X = rnd.Next(Convert.ToInt32(sizeOfCanvas.X - this.BaseRectangle.Width));
+                this.Y = rnd.Next(Convert.ToInt32(sizeOfCanvas.Y - this.BaseRectangle.Height));
                 if (this.X >= sizeOfCanvas.X || this.Y >= sizeOfCanvas.Y)
                 {
                     throw new FigureException("Figure is out of canvas!");
